@@ -36,16 +36,16 @@ export default function StartupHubsSection() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[#F26522] text-xs font-semibold uppercase tracking-wider">
             <Building2 className="w-4 h-4" />
-            <span>For Incubators & Accelerators</span>
+            <span>For Government Departments</span>
           </div>
 
           <h2 className="font-sans font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
-            Scale your hub with a <br className="hidden sm:block" />
-            <span className="font-serif italic font-normal text-[#F26522]">unified workspace.</span>
+            Source innovations with a <br className="hidden sm:block" />
+            <span className="font-serif italic font-normal text-[#F26522]">unified portal.</span>
           </h2>
 
           <p className="text-white/60 text-base sm:text-lg md:text-lg font-medium leading-relaxed max-w-2xl mx-auto">
-            Stop juggling spreadsheets and disconnected forms. Manage venture intake, track founder milestones, and host ecosystem events in one seamless platform built for high-growth hubs.
+            Stop relying on conventional procurement for novel technologies. Formulate problem statements, evaluate novel solutions, structure controlled pilots, and manage IP seamlessly in one transparent platform.
           </p>
 
           <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">

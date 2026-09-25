@@ -23,7 +23,7 @@ export default function FeatureCard({
     return (
         <motion.div
             whileHover={{ y: -4, scale: 1.01 }}
-            className={`relative w-full h-full rounded-[1.2rem] sm:rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 transition-all duration-500 flex flex-col ${isDark
+            className={`relative w-full h-full rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 transition-all duration-500 flex flex-col ${isDark
                 ? "bg-[#1A1A2E] text-white"
                 : "bg-white text-[#1A1A2E] border border-[#1A1A2E]/5"
                 } shadow-[0_4px_20px_rgba(0,0,0,0.02)] sm:shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]`}

@@ -18,11 +18,11 @@ export default function PrivacyPolicy() {
                 1. Introduction
               </h2>
               <p>
-                Welcome to OnlyStartups (www.onlystartups.app). We are committed to
+                Welcome to OnlyStartups (http://localhost:3000/). We are committed to
                 protecting your personal information and your right to privacy.
                 If you have any questions or concerns about our policy, or our
                 practices with regards to your personal information, please
-                contact us at info@onlystartups.app.
+                contact us at hackathon.teamkis@gmail.com.
               </p>
             </div>
 
@@ -72,7 +72,7 @@ export default function PrivacyPolicy() {
               </h2>
               <p>
                 If you have questions or comments about this policy, you may
-                email us at info@onlystartups.app.
+                email us at hackathon.teamkis@gmail.com.
               </p>
             </div>
           </section>

@@ -28,7 +28,7 @@ export default function RoleCard({
     <Link href={href} className="group block w-full h-full">
       <motion.div
         whileHover={{ y: -4, scale: 1.01 }}
-        className={`relative w-full h-full min-h-[170px] sm:min-h-[190px] md:min-h-[220px] rounded-[1.2rem] sm:rounded-xl overflow-hidden flex flex-col justify-center p-5 sm:p-6 md:p-8 transition-all duration-500 ${
+        className={`relative w-full h-full min-h-[170px] sm:min-h-[190px] md:min-h-[220px] rounded-2xl overflow-hidden flex flex-col justify-center p-5 sm:p-6 md:p-8 transition-all duration-500 ${
           isDark
             ? "bg-[#1A1A2E] text-white"
             : "bg-white text-[#1A1A2E] border border-[#1A1A2E]/5"

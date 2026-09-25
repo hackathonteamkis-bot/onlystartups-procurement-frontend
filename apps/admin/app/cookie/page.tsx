@@ -51,14 +51,14 @@ export default function CookiePolicy() {
                 and many other websites that you visit.
               </p>
             </div>
-            
+
             <div className="space-y-4">
               <h2 className="text-2xl font-semibold text-[#1A1A2E]">
                 4. Contact Us
               </h2>
               <p>
                 If you have questions or comments about this policy, you may
-                email us at info@onlystartups.app.
+                email us at hackathon.teamkis@gmail.com.
               </p>
             </div>
           </section>

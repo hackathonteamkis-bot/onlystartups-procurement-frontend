@@ -67,7 +67,7 @@ export default function HeroSection() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F26522]"></span>
               </span>
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-[#1A1A2E]/70">
-                India&apos;s Startup Ecosystem
+                Maharashtra State Innovation Society
               </span>
             </motion.div>
             <motion.h1
@@ -76,9 +76,9 @@ export default function HeroSection() {
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               className="font-sans text-[clamp(2rem,6.5vw,9rem)] font-semibold tracking-tighter leading-[1.1] sm:leading-[0.95] lg:leading-[0.9] text-[#1A1A2E]"
             >
-              <span className="block sm:whitespace-nowrap">Shared Workspace</span>
+              <span className="block sm:whitespace-nowrap">Public Procurement</span>
               <span className="block sm:whitespace-nowrap">for{' '}
-                <span className="font-serif font-normal italic inline-block text-[#F26522]">Startup Hubs & Founders</span>
+                <span className="font-serif font-normal italic inline-block text-[#F26522]">Govt Departments & Startups</span>
               </span>
             </motion.h1>
 
@@ -88,7 +88,7 @@ export default function HeroSection() {
               transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-[92%] sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-5xl text-[13px] sm:text-base md:text-lg lg:text-xl xl:text-2xl text-[#1A1A2E]/70 font-medium leading-relaxed mx-auto text-balance"
             >
-              Powering India&apos;s startup ecosystem with one collaborative workspace to build, connect, and grow.
+              A transparent, competitive, and legally compliant innovation-procurement pathway enabling government departments to identify, pilot, procure, and scale solutions.
             </motion.p>
 
             <motion.div
@@ -138,10 +138,10 @@ export default function HeroSection() {
             className="text-center mb-6 sm:mb-8 md:mb-10 lg:mb-12"
           >
             <h2 className="text-[#F26522] font-bold tracking-[0.3em] text-[10px] sm:text-xs uppercase mb-3">
-              Built for Both Sides
+              Bridging the Gap
             </h2>
             <p className="font-sans font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#1A1A2E] tracking-tight leading-tight">
-              One platform. <span className="font-serif font-normal italic text-[#F26522]">Two perspectives.</span>
+              Empowering Departments. <span className="font-serif font-normal italic text-[#F26522]">Scaling Startups.</span>
             </p>
           </motion.div>
 
@@ -153,10 +153,10 @@ export default function HeroSection() {
               viewport={{ once: true, margin: "-100px" }}
             >
               <RoleCard
-                title="For the Startup Hub"
-                subtitle="The seamless operational infrastructure that makes your program run like a well-oiled machine."
+                title="For Government Departments"
+                subtitle="Formulate outcome-based problem statements, discover suitable startups, and execute controlled pilots effortlessly."
                 imageSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800"
-                href="https://startuphub.onlystartups.app/"
+                href="http://localhost:3003/"
                 theme="light"
                 exploreText="LEARN MORE"
               />
@@ -168,8 +168,8 @@ export default function HeroSection() {
               viewport={{ once: true, margin: "-100px" }}
             >
               <RoleCard
-                title="For the Founder"
-                subtitle="The strategic launchpad ensuring your foundation is flawless from Day Zero."
+                title="For Innovative Startups"
+                subtitle="Bypass long sales cycles, apply directly to government challenges, and secure milestone-based payments."
                 imageSrc="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800"
                 href="/auth/register"
                 theme="dark"
@@ -187,12 +187,12 @@ export default function HeroSection() {
               className="h-full"
             >
               <FeatureCard
-                title="Shared Workspace."
+                title="End-to-End Mechanism."
                 features={[
-                  "Standardized curriculum via SMS",
-                  "CRM & milestone tracking",
-                  "Application & events workflows",
-                  "Program management at scale"
+                  "Standardized problem statements",
+                  "Expert evaluation & screening",
+                  "Milestone-based contracting",
+                  "Performance & validation tracking"
                 ]}
                 theme="dark"
               />
@@ -205,12 +205,12 @@ export default function HeroSection() {
               className="h-full"
             >
               <FeatureCard
-                title="The Launchpad."
+                title="Procurement Pathway."
                 features={[
-                  "Show your Product",
-                  "Curated startup hub",
-                  "Funding Opportunities",
-                  "Join Events"
+                  "Direct government access",
+                  "Transparent eligibility criteria",
+                  "Sandbox & pilot design",
+                  "Scale-up opportunities"
                 ]}
                 theme="light"
               />

@@ -41,7 +41,7 @@ const Footer = () => {
             <Link href="/about" className="text-white/60 hover:text-[#F26522] transition-colors text-xs sm:text-sm lg:text-base">About</Link>
             <Link href="#" className="text-white/60 hover:text-[#F26522] transition-colors text-xs sm:text-sm lg:text-base">OS Daily</Link>
             <Link href="#" className="text-white/60 hover:text-[#F26522] transition-colors text-xs sm:text-sm lg:text-base">FixThis</Link>
-            <Link href="https://startuphub.onlystartups.app/" target="_blank" className="text-white/60 hover:text-[#F26522] transition-colors text-xs sm:text-sm lg:text-base leading-tight">Startuphub Onboarding</Link>
+            <Link href="http://localhost:3003/" target="_blank" className="text-white/60 hover:text-[#F26522] transition-colors text-xs sm:text-sm lg:text-base leading-tight">Startuphub Onboarding</Link>
           </div>
 
           {/* Column 2: Legal */}
@@ -55,14 +55,7 @@ const Footer = () => {
           {/* Column 3: Contact Us */}
           <div className="flex flex-col space-y-2 sm:space-y-3">
             <h4 className="text-base sm:text-xl font-bold text-white mb-1 sm:mb-2">Contact Us</h4>
-            <div className="flex items-center gap-2 sm:gap-3 text-white/60 text-xs sm:text-sm lg:text-base">
-              <FaPhoneAlt className="text-white/40 shrink-0" />
-              <span>+91 9372179120</span>
-            </div>
-            <div className="flex items-center gap-2 sm:gap-3 text-white/60 text-xs sm:text-sm lg:text-base">
-              <FaEnvelope className="text-white/40 shrink-0" />
-              <a href="mailto:info@onlystartups.app" className="hover:text-[#F26522] transition-colors truncate">info@onlystartups.app</a>
-            </div>
+
             <Link href="#" className="text-white/60 hover:text-[#F26522] transition-colors text-xs sm:text-sm lg:text-base">Partner with Us</Link>
           </div>
 

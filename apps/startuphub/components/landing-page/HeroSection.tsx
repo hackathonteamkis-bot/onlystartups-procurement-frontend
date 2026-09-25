@@ -156,7 +156,7 @@ export default function HeroSection() {
                 title="For the Startup Hub"
                 subtitle="The seamless operational infrastructure that makes your program run like a well-oiled machine."
                 imageSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800"
-                href="https://startuphub.onlystartups.app/"
+                href="http://localhost:3003/"
                 theme="light"
                 exploreText="LEARN MORE"
               />

@@ -6,29 +6,29 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "What is OnlyStartups?",
+    question: "What is the Public Procurement Platform?",
     answer:
-      "OnlyStartups is an integrated platform connecting startup hubs (accelerators, incubators) with founders. We provide the operational infrastructure for hubs to manage their programs, and the strategic tools founders need to build from day zero.",
+      "It is a centralized ecosystem connecting Government Departments with innovative startups. We provide the operational infrastructure for departments to post problem statements, and the tools startups need to apply and run controlled pilots.",
   },
   {
-    question: "What tools are provided for Startup Hubs?",
+    question: "How does this help Government Departments?",
     answer:
-      "We offer a complete shared workspace for program management. Hubs can streamline venture intake, deliver standardized curriculum via SMS, track milestones, and manage grants all from a single dashboard.",
+      "Departments can seamlessly formulate outcome-based problem statements, discover vetted startups, evaluate novel technologies, and structure controlled pilots without the red tape of conventional procurement.",
   },
   {
-    question: "What resources are available for Founders?",
+    question: "How does this benefit Startups?",
     answer:
-      "Founders gain access to a curated network of startup hubs, actionable playbooks, real-time equity management, and a centralized directory of grants and events to accelerate their growth.",
+      "Startups bypass long sales cycles and prior-turnover requirements. They get direct visibility into departmental demand, transparent evaluation criteria, and milestone-based contracting ensuring timely payments.",
   },
   {
-    question: "Is OnlyStartups free to use?",
+    question: "Are there standard templates available?",
     answer:
-      "We offer a comprehensive free tier for early-stage founders and new startup hubs. As your operations scale, we provide premium tiers with advanced CRM capabilities and custom integrations.",
+      "Yes! The platform provides standard templates for problem statements, evaluation criteria, pilot agreements, data/IP clauses, cybersecurity, and risk management pathways.",
   },
   {
     question: "How do I get started?",
     answer:
-      "Whether you're a founder looking to launch or a hub looking to scale, you can request access directly through our portal. Once approved, you'll join an exclusive, high-signal network tailored to your goals.",
+      "Government officials can log in to post challenges. Startups can register, build their profile, and apply directly to active problem statements. Everything is managed end-to-end on the platform.",
   },
 ];
 

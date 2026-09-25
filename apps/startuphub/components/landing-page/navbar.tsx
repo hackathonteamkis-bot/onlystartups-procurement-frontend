@@ -50,16 +50,31 @@ export function Navbar() {
       {/* Main Navbar */}
       <div className="bg-[#1A1A2E] rounded-full border border-white/10 px-4 sm:px-6 lg:px-8 shadow-lg">
         <div className="flex items-center justify-between h-12 sm:h-14 md:h-16">
-          {/* Logo */}
-          <Link href={session ? "/dashboard" : "/"} className="flex items-center space-x-2 group shrink-0">
-            <Image
-              src="/logo/os-logo-white.svg"
-              alt="OnlyStartups"
-              width={32}
-              height={32}
-              className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 transition-opacity duration-300 group-hover:opacity-80"
-            />
-          </Link>
+          {/* Logo Group */}
+          <div className="flex items-center shrink-0">
+            <Link href={session ? "/dashboard" : "/"} className="flex items-center group shrink-0">
+              <Image
+                src="/logo/os-logo-white.svg"
+                alt="OnlyStartups"
+                width={32}
+                height={32}
+                className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 transition-opacity duration-300 group-hover:opacity-80"
+              />
+            </Link>
+            
+            <div className="w-[1px] h-6 sm:h-8 bg-white/20 mx-3 sm:mx-4"></div>
+            
+            <Link href={session ? "/dashboard" : "/"} className="flex items-center group shrink-0">
+              <Image
+                src="/logo/msis.png"
+                alt="Maharashtra State Innovation Society"
+                width={300}
+                height={100}
+                unoptimized
+                className="h-8 w-auto sm:h-9 md:h-10 transition-opacity duration-300 group-hover:opacity-80 object-contain"
+              />
+            </Link>
+          </div>
 
           {/* Desktop Menu Items */}
           <div className="hidden lg:flex items-center space-x-1 flex-1 justify-end mr-3 lg:mr-4">
@@ -97,7 +112,7 @@ export function Navbar() {
                     Founders Login
                   </Button>
                 </LoginButton>
-                <Link href="https://startuphub.onlystartups.app/" target="_blank">
+                <Link href="http://localhost:3003/" target="_blank">
                   <Button className="rounded-full bg-[#F26522] text-white hover:bg-[#d95a1e] transition-all duration-300 shadow-lg hover:shadow-xl text-sm px-4 py-2 border-none">
                     Join as Startuphub
                   </Button>
@@ -175,7 +190,7 @@ export function Navbar() {
                     Founders Login
                   </Button>
                 </LoginButton>
-                <Link href="https://startuphub.onlystartups.app/" target="_blank" className="block w-full">
+                <Link href="http://localhost:3003/" target="_blank" className="block w-full">
                   <Button className="w-full rounded-full bg-[#F26522] text-white hover:bg-[#d95a1e] transition-all duration-300 shadow-lg hover:shadow-xl h-12 text-base border-none">
                     Join as Startuphub
                   </Button>
