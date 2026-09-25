@@ -10,11 +10,10 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     return { error: "Invalid Fields!" };
   }
 
-  const { confirmPassword, firstName, lastName, ...dataToSend } = validateFields.data;
+  const { confirmPassword, ...dataToSend } = validateFields.data;
 
   const payload = {
     ...dataToSend,
-    name: `${firstName} ${lastName}`.trim(),
   };
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://onlystartups-api.vercel.app';

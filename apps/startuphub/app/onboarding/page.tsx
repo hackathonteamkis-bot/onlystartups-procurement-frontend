@@ -136,23 +136,34 @@ export default function OnboardingPage() {
 
   // Compute dynamic slides configuration
   const slides = useMemo(() => {
-    const list: SlideConfig[] = [
-      {
+    const list: SlideConfig[] = [];
+
+    const sessionFirstName = (session?.user as any)?.firstName;
+    const sessionLastName = (session?.user as any)?.lastName;
+
+    if (!sessionFirstName) {
+      list.push({
         id: "firstName",
         label: "What is your first name?",
         description: "Please enter your first name.",
         type: "TEXT",
         placeholder: "e.g., Jane",
         errorMessage: "First name must be at least 2 characters",
-      },
-      {
+      });
+    }
+
+    if (!sessionLastName) {
+      list.push({
         id: "lastName",
         label: "What is your last name?",
         description: "Please enter your last name.",
         type: "TEXT",
         placeholder: "e.g., Doe",
         errorMessage: "Last name must be at least 2 characters",
-      },
+      });
+    }
+
+    list.push(
       {
         id: "title",
         label: "What is your professional title?",
@@ -199,8 +210,8 @@ export default function OnboardingPage() {
           { value: "Social", label: "ESG / Social Impact" },
         ],
         errorMessage: "Please select your focus",
-      },
-    ];
+      }
+    );
 
     if (formData.startupPhase && formData.startupPhase !== "none") {
       list.push(
@@ -248,7 +259,7 @@ export default function OnboardingPage() {
     );
 
     return list;
-  }, [formData.startupPhase]);
+  }, [formData.startupPhase, session?.user]);
 
   // Bug fix: clamp currentIndex when slides array length changes
   // (e.g. user changes startupPhase which adds/removes slides)
@@ -324,8 +335,13 @@ export default function OnboardingPage() {
     setIsCompleting(true);
 
     startTransition(() => {
+      const sessionFirstName = (session?.user as any)?.firstName;
+      const sessionLastName = (session?.user as any)?.lastName;
+
       const onboardingData = {
         ...formData,
+        firstName: sessionFirstName || formData.firstName,
+        lastName: sessionLastName || formData.lastName,
         role: formData.role,
         startupName:
           formData.startupPhase === "none" ? undefined : formData.startupName,
