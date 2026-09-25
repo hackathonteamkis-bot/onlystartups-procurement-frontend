@@ -112,7 +112,7 @@ export function Navbar() {
                     Founders Login
                   </Button>
                 </LoginButton>
-                <Link href="http://localhost:3003/" target="_blank">
+                <Link href="https://onlystartups-gov.vercel.app/" target="_blank">
                   <Button className="rounded-full bg-[#F26522] text-white hover:bg-[#d95a1e] transition-all duration-300 shadow-lg hover:shadow-xl text-sm px-4 py-2 border-none">
                     Join as Startuphub
                   </Button>
@@ -190,7 +190,7 @@ export function Navbar() {
                     Founders Login
                   </Button>
                 </LoginButton>
-                <Link href="http://localhost:3003/" target="_blank" className="block w-full">
+                <Link href="https://onlystartups-gov.vercel.app/" target="_blank" className="block w-full">
                   <Button className="w-full rounded-full bg-[#F26522] text-white hover:bg-[#d95a1e] transition-all duration-300 shadow-lg hover:shadow-xl h-12 text-base border-none">
                     Join as Startuphub
                   </Button>

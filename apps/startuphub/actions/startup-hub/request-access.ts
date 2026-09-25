@@ -10,7 +10,7 @@ export const requestAccess = async (values: z.infer<typeof StartupHubAccessReque
     return { error: "Invalid Fields!" };
   }
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://onlystartups-api.vercel.app';
 
   try {
     const response = await fetch(`${API_URL}/startup-hub/request-access`, {

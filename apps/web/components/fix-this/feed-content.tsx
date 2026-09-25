@@ -118,7 +118,7 @@ export function FeedContent({ initialIssues }: FeedContentProps) {
       if (search) queryParams.append("search", search);
       queryParams.append("sort", sortBy);
 
-      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://onlystartups-api.vercel.app";
       const token = session;
 
       const headers: HeadersInit = { "Content-Type": "application/json" };

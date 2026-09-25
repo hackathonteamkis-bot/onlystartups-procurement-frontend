@@ -156,7 +156,7 @@ export default function HeroSection() {
                 title="For Government Departments"
                 subtitle="Formulate outcome-based problem statements, discover suitable startups, and execute controlled pilots effortlessly."
                 imageSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800"
-                href="http://localhost:3003/"
+                href="https://onlystartups-gov.vercel.app/"
                 theme="light"
                 exploreText="LEARN MORE"
               />

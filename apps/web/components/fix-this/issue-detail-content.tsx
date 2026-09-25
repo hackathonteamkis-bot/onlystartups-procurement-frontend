@@ -100,7 +100,7 @@ export function IssueDetailContent({ initialIssue, initialRecommendations }: Iss
   // Recalculate and fetch fresh issue info from backend
   const refreshIssue = async () => {
     try {
-      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://onlystartups-api.vercel.app";
       const res = await fetch(`${API_URL}/fix-this/${initialIssue.id}`, {
         cache: "no-store",
       });

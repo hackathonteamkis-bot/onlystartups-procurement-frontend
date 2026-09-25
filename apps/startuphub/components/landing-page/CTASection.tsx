@@ -40,7 +40,7 @@ export default function CTASection() {
                 Join as Founder
               </Link>
               <Link
-                href="http://localhost:3003/"
+                href="https://onlystartups-gov.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-3.5 bg-[#F26522] text-white rounded-full font-bold text-sm sm:text-base text-center transition-all duration-300 shadow-lg hover:shadow-xl hover:bg-[#d95a1e]"

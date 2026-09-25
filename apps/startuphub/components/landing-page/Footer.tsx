@@ -41,7 +41,7 @@ const Footer = () => {
             <Link href="/about" className="text-white/60 hover:text-[#F26522] transition-colors text-xs sm:text-sm lg:text-base">About</Link>
             <Link href="#" className="text-white/60 hover:text-[#F26522] transition-colors text-xs sm:text-sm lg:text-base">OS Daily</Link>
             <Link href="#" className="text-white/60 hover:text-[#F26522] transition-colors text-xs sm:text-sm lg:text-base">FixThis</Link>
-            <Link href="http://localhost:3003/" target="_blank" className="text-white/60 hover:text-[#F26522] transition-colors text-xs sm:text-sm lg:text-base leading-tight">Startuphub Onboarding</Link>
+            <Link href="https://onlystartups-gov.vercel.app/" target="_blank" className="text-white/60 hover:text-[#F26522] transition-colors text-xs sm:text-sm lg:text-base leading-tight">Startuphub Onboarding</Link>
           </div>
 
           {/* Column 2: Legal */}

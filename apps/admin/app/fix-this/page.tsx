@@ -5,7 +5,7 @@ import Footer from "@/components/landing-page/Footer";
 import { FeedContent } from "@/components/fix-this/feed-content";
 import { getSession } from "@/lib/auth";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://onlystartups-api.vercel.app";
 
 async function getInitialIssues(token?: string): Promise<any[]> {
   try {

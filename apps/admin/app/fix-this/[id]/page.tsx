@@ -6,7 +6,7 @@ import { IssueDetailContent } from "@/components/fix-this/issue-detail-content";
 import { getSession } from "@/lib/auth";
 import { notFound } from "next/navigation";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://onlystartups-api.vercel.app";
 
 interface PageProps {
   params: Promise<{ id: string }>;

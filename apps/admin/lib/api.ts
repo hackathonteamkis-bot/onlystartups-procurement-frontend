@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://onlystartups-api.vercel.app';
 
 export async function fetchWithAuth(endpoint: string, options: RequestInit = {}) {
   const session = await auth();

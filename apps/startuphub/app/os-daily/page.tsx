@@ -56,7 +56,7 @@ function generateDateRange(activeDateStr: string): string[] {
   return Array.from(new Set(dates)).sort();
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://onlystartups-api.vercel.app";
 
 async function getNewsForDate(date: string, page: string): Promise<OsDailyResponse | null> {
   if (!isValidDateString(date)) return null;

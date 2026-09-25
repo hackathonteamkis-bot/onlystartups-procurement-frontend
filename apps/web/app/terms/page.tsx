@@ -18,7 +18,7 @@ export default function TermsOfService() {
                 1. Agreement to Terms
               </h2>
               <p>
-                By accessing or using OnlyStartups (http://localhost:3000/), you agree to
+                By accessing or using OnlyStartups (https://onlystartups-web.vercel.app/), you agree to
                 be bound by these Terms of Service and all applicable laws and
                 regulations. If you do not agree with any of these terms, you
                 are prohibited from using or accessing this site.
