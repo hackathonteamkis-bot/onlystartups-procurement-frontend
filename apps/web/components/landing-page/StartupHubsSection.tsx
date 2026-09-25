@@ -14,7 +14,7 @@ const images = [
   { src: "/images/integrations.png", alt: "Integrations" },
 ];
 
-export default function StartupHubsSection() {
+export default function GovDepartmentsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const next = () => setCurrentIndex((prev) => (prev + 1) % images.length);

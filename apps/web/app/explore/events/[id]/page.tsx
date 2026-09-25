@@ -39,10 +39,10 @@ interface Meetup {
   agenda?: any;
   image?: string;
   maxAttendees?: number;
-  startupHubId: string;
+  govDepartmentId: string;
   isApplied?: boolean;
   registrationStatus?: string;
-  startupHub: {
+  govDepartment: {
     name: string;
     startupName?: string;
     image?: string;
@@ -74,9 +74,9 @@ export default function MeetupDetailPage() {
         } else {
           setMeetup(res);
           const currentUserId = session?.user?.id;
-          if (shouldTrack && res.startupHubId && currentUserId && currentUserId !== res.startupHubId && !hasTrackedRef.current) {
+          if (shouldTrack && res.govDepartmentId && currentUserId && currentUserId !== res.govDepartmentId && !hasTrackedRef.current) {
             hasTrackedRef.current = true;
-            void trackAnalytics("FORM_VIEW", "meetup", res.startupHubId, { meetupId: res.id });
+            void trackAnalytics("FORM_VIEW", "meetup", res.govDepartmentId, { meetupId: res.id });
           }
         }
       }
@@ -109,7 +109,7 @@ export default function MeetupDetailPage() {
         toast.success("Successfully registered for the event!");
         fetchMeetup();
 
-        void trackAnalytics("FORM_SUBMIT", "meetup", meetup.startupHubId, { meetupId: meetup.id });
+        void trackAnalytics("FORM_SUBMIT", "meetup", meetup.govDepartmentId, { meetupId: meetup.id });
       } else if (res.error) {
         toast.error(res.error);
       } else {
@@ -134,12 +134,12 @@ export default function MeetupDetailPage() {
     return (
       <div className="h-[80vh] flex flex-col items-center justify-center gap-4 text-center">
         <MapPinned className="w-12 h-12 text-muted-foreground/20" />
-        <h2 className="text-xl font-bold">Event not found</h2>
+        <h2 className="text-xl font-bold">Briefing/Workshop not found</h2>
         <button
           onClick={() => router.back()}
           className="text-primary hover:underline font-semibold"
         >
-          Back to Events
+          Back to Briefings & Workshops
         </button>
       </div>
     );
@@ -169,7 +169,7 @@ export default function MeetupDetailPage() {
           className="text-xs font-bold text-muted-foreground flex items-center gap-2 hover:text-[#1A1A2E] transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
-          BACK TO EVENTS
+          BACK TO BRIEFINGS & WORKSHOPS
         </button>
       </div>
 
@@ -205,18 +205,18 @@ export default function MeetupDetailPage() {
              <Separator className="bg-black/10" />
              <div className="pt-1">
                 <Link 
-                  href={`/explore/startup-hubs/${meetup.startupHubId}`}
+                  href={`/explore/gov-departments/${meetup.govDepartmentId}`}
                   className="flex items-center gap-3 w-full group"
                 >
                   <Avatar className="h-10 w-10 rounded-lg shrink-0 group-hover:opacity-80 transition-opacity">
-                    <AvatarImage src={meetup.startupHub?.image || ""} className="object-cover" />
+                    <AvatarImage src={meetup.govDepartment?.image || ""} className="object-cover" />
                     <AvatarFallback className="bg-[#1A1A2E] text-white font-black text-xs">
-                      {meetup.startupHub?.startupName?.charAt(0) || meetup.startupHub?.name?.charAt(0) || "SH"}
+                      {meetup.govDepartment?.startupName?.charAt(0) || meetup.govDepartment?.name?.charAt(0) || "SH"}
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-bold text-[#1A1A2E] whitespace-normal break-words group-hover:underline underline-offset-4">
-                      {meetup.startupHub?.startupName || meetup.startupHub?.name}
+                      {meetup.govDepartment?.startupName || meetup.govDepartment?.name}
                     </p>
                   </div>
                 </Link>
@@ -294,7 +294,7 @@ export default function MeetupDetailPage() {
              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="min-w-0">
                   <h2 className="text-lg font-bold text-[#1A1A2E] break-words">
-                    {meetup.isApplied ? (meetup.registrationStatus === 'APPROVED' ? 'Registration Confirmed' : meetup.registrationStatus === 'WAITLISTED' ? 'Waitlisted' : 'Registration Pending') : isFull ? 'Event Full' : 'Open for Registration'}
+                    {meetup.isApplied ? (meetup.registrationStatus === 'APPROVED' ? 'Registration Confirmed' : meetup.registrationStatus === 'WAITLISTED' ? 'Waitlisted' : 'Registration Pending') : isFull ? 'Session Full' : 'Open for Registration'}
                   </h2>
                 </div>
                 
@@ -335,7 +335,7 @@ export default function MeetupDetailPage() {
 
           {/* About Event */}
           <section className="space-y-2 pt-4">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">About the Event</h3>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">About the Briefing/Workshop</h3>
             <div className="prose prose-sm sm:prose-base max-w-none text-[#1A1A2E]/80 whitespace-pre-wrap break-words">
               {meetup.description || "No description provided."}
             </div>

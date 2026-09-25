@@ -80,7 +80,7 @@ export default function OnboardingPage() {
 
   // Unified Form state
   const [formData, setFormData] = useState({
-    role: "USER" as "USER" | "STARTUP_HUB",
+    role: "USER" as "USER" | "GOV_DEPARTMENT",
     firstName: "",
     lastName: "",
     title: "",
@@ -97,7 +97,7 @@ export default function OnboardingPage() {
   // Sync session initial data
   useEffect(() => {
     if (status === "authenticated" && session?.user) {
-      const role = (session.user?.role as "USER" | "STARTUP_HUB") || "USER";
+      const role = (session.user?.role as "USER" | "GOV_DEPARTMENT") || "USER";
       const firstName = (session.user as any)?.firstName || "";
       const lastName = (session.user as any)?.lastName || "";
 

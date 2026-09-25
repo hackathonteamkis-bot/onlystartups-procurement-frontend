@@ -13,24 +13,24 @@ import { getAnalytics } from "@/actions/dashboard/analytics";
 import { Skeleton } from "@onlystartups/ui";
 
 interface AnalyticsSummaryProps {
-    startupHubId: string;
+    govDepartmentId: string;
     className?: string;
 }
 
-export function AnalyticsSummary({ startupHubId, className }: AnalyticsSummaryProps) {
+export function AnalyticsSummary({ govDepartmentId, className }: AnalyticsSummaryProps) {
     const [stats, setStats] = useState<{ type: string }[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function loadStats() {
-            const res = await getAnalytics(startupHubId);
+            const res = await getAnalytics(govDepartmentId);
             if (Array.isArray(res)) {
                 setStats(res);
             }
             setLoading(false);
         }
         loadStats();
-    }, [startupHubId]);
+    }, [govDepartmentId]);
 
     if (loading) {
         return (

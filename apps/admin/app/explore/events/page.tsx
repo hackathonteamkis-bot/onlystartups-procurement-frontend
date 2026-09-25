@@ -27,7 +27,7 @@ interface Meetup {
   location: string;
   image?: string;
   isApplied?: boolean;
-  startupHub: {
+  govDepartment: {
     name: string;
     startupName?: string;
     image?: string;
@@ -60,7 +60,7 @@ export default function ExploreMeetupsPage() {
     (m) =>
       m.title.toLowerCase().includes(search.toLowerCase()) ||
       m.location.toLowerCase().includes(search.toLowerCase()) ||
-      (m.startupHub?.startupName || "")
+      (m.govDepartment?.startupName || "")
         .toLowerCase()
         .includes(search.toLowerCase()),
   );
@@ -244,7 +244,7 @@ function MeetupCard({
             {meetup.title}
           </h3>
           <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide flex items-center gap-1.5">
-            By {meetup.startupHub?.startupName || meetup.startupHub?.name}
+            By {meetup.govDepartment?.startupName || meetup.govDepartment?.name}
           </p>
         </div>
 

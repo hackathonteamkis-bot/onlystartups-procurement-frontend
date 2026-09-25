@@ -22,7 +22,7 @@ export default async function ExplorePage() {
   }
 
   const data = res || {
-    startupHubs: [],
+    govDepartments: [],
     resources: [],
     events: [],
     fundingOpportunities: [],

@@ -1,0 +1,72 @@
+import { auth } from "@/auth";
+import {
+  DEFAULT_LOGIN_REDIRECT,
+  apiAuthPrefix,
+  authRoutes,
+  publicRoutes,
+  onboardingRoute,
+} from "./routes";
+
+export default auth((req) => {
+  const { nextUrl } = req;
+  const isLoggedIn = !!req.auth;
+
+  const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
+  const isPublicRoute =
+    publicRoutes.includes(nextUrl.pathname) ||
+    nextUrl.pathname.startsWith("/fix-this") ||
+    (nextUrl.pathname.startsWith("/explore") && !nextUrl.pathname.endsWith("/apply"));
+  const isAuthRoute = authRoutes.includes(nextUrl.pathname);
+  const isOnboardingRoute = nextUrl.pathname === onboardingRoute;
+
+  if (isApiAuthRoute) {
+    return;
+  }
+
+  if (isLoggedIn) {
+    const user = req.auth?.user;
+    if (user && !user.onboardingComplete && user.role !== "ADMIN" && !isOnboardingRoute) {
+      if (nextUrl.pathname !== "/auth/setup-password") {
+        return Response.redirect(new URL(onboardingRoute, nextUrl));
+      }
+    }
+  }
+
+  if (isAuthRoute) {
+    if (isLoggedIn) {
+      // Allow setup-password page for logged-in users (they need to change their temp password)
+      if (nextUrl.pathname === "/auth/setup-password") {
+        return;
+      }
+      return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+    }
+    return;
+  }
+
+  // Redirect logged-in users from the landing page ("/") to the dashboard page
+  if (nextUrl.pathname === "/" && isLoggedIn) {
+    const userRole = req.auth?.user?.role;
+    if (userRole !== "GOV_DEPARTMENT") {
+      return Response.redirect(new URL("/auth/error?error=AccessDenied", nextUrl));
+    }
+    return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+  }
+
+  if (isLoggedIn && !isPublicRoute) {
+    const userRole = req.auth?.user?.role;
+    if (userRole !== "GOV_DEPARTMENT") {
+      return Response.redirect(new URL("/auth/error?error=AccessDenied", nextUrl));
+    }
+  }
+
+  if (!isLoggedIn && !isPublicRoute) {
+    return Response.redirect(new URL("/", nextUrl));
+  }
+
+  return;
+});
+
+// Optionally, don't run Middleware on some paths
+export const config = {
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+};

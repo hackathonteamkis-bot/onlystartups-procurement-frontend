@@ -21,7 +21,7 @@ import { PageHeader } from "@/components/shared/page-header";
 import Link from "next/link";
 
 interface ApplicationData {
-  startupHubApplications: any[];
+  govDepartmentApplications: any[];
   fundingOpportunityApplications: any[];
 }
 
@@ -58,15 +58,15 @@ export default function UserApplicationsPage() {
 
   const applications = data
     ? [
-      ...(data.startupHubApplications || []).map((a: { id: string; startupHubId: string; status: string; createdAt: string; startupHub: any; program?: any; programId?: string }) => ({
+      ...(data.govDepartmentApplications || []).map((a: { id: string; govDepartmentId: string; status: string; createdAt: string; govDepartment: any; program?: any; programId?: string }) => ({
         ...a,
-        type: a.programId ? "PROGRAM" as const : "STARTUP_HUB" as const,
+        type: a.programId ? "PROGRAM" as const : "GOV_DEPARTMENT" as const,
         title: a.programId ? a.program?.name : undefined,
       })),
-      ...(data.fundingOpportunityApplications || []).map((a: { id: string; startupHubId: string; status: string; createdAt: string; opportunity: any }) => ({
+      ...(data.fundingOpportunityApplications || []).map((a: { id: string; govDepartmentId: string; status: string; createdAt: string; opportunity: any }) => ({
         ...a,
         type: "GRANT" as const,
-        startupHub: a.opportunity.startupHub,
+        govDepartment: a.opportunity.govDepartment,
         title: a.opportunity.name,
       })),
     ].sort(
@@ -113,8 +113,8 @@ export default function UserApplicationsPage() {
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
       {/* Header */}
       <PageHeader
-        title="Your Applications"
-        description="Track your startup hub admission status and venture scaling journey."
+        title="Submitted Solutions"
+        description="Track the status of your submitted solutions."
       />
 
       <div className="relative">
@@ -139,13 +139,13 @@ export default function UserApplicationsPage() {
                           <div className="flex items-center gap-3">
                             <Avatar className="h-8 w-8 rounded-lg shadow-sm border border-muted/20 shrink-0">
                               <AvatarImage
-                                src={app.startupHub.image || ""}
+                                src={app.govDepartment.image || ""}
                                 className="object-cover"
                               />
                               <AvatarFallback className="bg-[#1A1A2E] text-white font-bold text-[10px]">
                                 {(
-                                  app.startupHub.startupName ||
-                                  app.startupHub.name ||
+                                  app.govDepartment.startupName ||
+                                  app.govDepartment.name ||
                                   "?"
                                 ).charAt(0)}
                               </AvatarFallback>
@@ -153,12 +153,12 @@ export default function UserApplicationsPage() {
                             <span className="truncate max-w-[200px] inline-block">
                               {app.type === "GRANT" || app.type === "PROGRAM"
                                 ? app.title
-                                : app.startupHub.startupName || app.startupHub.name}
+                                : app.govDepartment.startupName || app.govDepartment.name}
                             </span>
                           </div>
                         </td>
                         <td className="px-6 py-4 text-muted-foreground font-medium whitespace-nowrap">
-                          {app.startupHub.startupName || app.startupHub.name}
+                          {app.govDepartment.startupName || app.govDepartment.name}
                         </td>
                         <td className="px-6 py-4 text-muted-foreground font-medium whitespace-nowrap">
                           {new Date(app.createdAt).toLocaleDateString()}
@@ -168,7 +168,7 @@ export default function UserApplicationsPage() {
                         </td>
                         <td className="px-6 py-4 text-right whitespace-nowrap">
                           <Link
-                            href={app.type === "PROGRAM" ? `/explore/startup-hubs/${app.startupHubId}/programs/${app.programId}` : `/explore/startup-hubs/${app.startupHubId}`}
+                            href={app.type === "PROGRAM" ? `/explore/gov-departments/${app.govDepartmentId}/programs/${app.programId}` : `/explore/gov-departments/${app.govDepartmentId}`}
                             className="text-[#F26522] font-black text-[10px] uppercase tracking-widest hover:underline"
                           >
                             View Application
@@ -187,11 +187,10 @@ export default function UserApplicationsPage() {
               </div>
               <div className="space-y-2">
                 <h3 className="text-2xl font-black text-[#1A1A2E]">
-                  No applications yet
+                  No solutions submitted yet
                 </h3>
                 <p className="text-sm text-[#1A1A2E]/60 max-w-xs mx-auto font-medium">
-                  Apply to startup hubs and funding opportunities from the ecosystem hub
-                  to start your venture scaling journey.
+                  Submit solutions to problem statements and tenders to start your venture scaling journey.
                 </p>
               </div>
               <Link href="/explore">

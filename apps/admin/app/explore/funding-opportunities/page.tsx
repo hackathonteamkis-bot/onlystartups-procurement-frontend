@@ -96,8 +96,8 @@ export default async function ExploreFundingOpportunitiesPage() {
                     
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-lg border border-muted/40 overflow-hidden relative bg-white flex items-center justify-center p-1 shadow-sm shrink-0">
-                        {opportunity.startupHub?.image ? (
-                          <Image src={opportunity.startupHub.image} alt={opportunity.startupHub.name} fill className="object-cover" />
+                        {opportunity.govDepartment?.image ? (
+                          <Image src={opportunity.govDepartment.image} alt={opportunity.govDepartment.name} fill className="object-cover" />
                         ) : (
                           <Building2 className="w-4 h-4 text-muted-foreground/40" />
                         )}
@@ -105,7 +105,7 @@ export default async function ExploreFundingOpportunitiesPage() {
                       <div className="overflow-hidden">
                         <p className="text-[9px] font-black text-[#1A1A2E]/40 uppercase tracking-tighter mb-0.5">Managed By</p>
                         <p className="text-xs font-bold text-[#1A1A2E] truncate">
-                          {opportunity.startupHub?.startupName || opportunity.startupHub?.name}
+                          {opportunity.govDepartment?.startupName || opportunity.govDepartment?.name}
                         </p>
                       </div>
                     </div>

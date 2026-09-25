@@ -39,10 +39,10 @@ interface Meetup {
   agenda?: any;
   image?: string;
   maxAttendees?: number;
-  startupHubId: string;
+  govDepartmentId: string;
   isApplied?: boolean;
   registrationStatus?: string;
-  startupHub: {
+  govDepartment: {
     name: string;
     startupName?: string;
     image?: string;
@@ -74,9 +74,9 @@ export default function MeetupDetailPage() {
         } else {
           setMeetup(res);
           const currentUserId = session?.user?.id;
-          if (shouldTrack && res.startupHubId && currentUserId && currentUserId !== res.startupHubId && !hasTrackedRef.current) {
+          if (shouldTrack && res.govDepartmentId && currentUserId && currentUserId !== res.govDepartmentId && !hasTrackedRef.current) {
             hasTrackedRef.current = true;
-            void trackAnalytics("FORM_VIEW", "meetup", res.startupHubId, { meetupId: res.id });
+            void trackAnalytics("FORM_VIEW", "meetup", res.govDepartmentId, { meetupId: res.id });
           }
         }
       }
@@ -109,7 +109,7 @@ export default function MeetupDetailPage() {
         toast.success("Successfully registered for the event!");
         fetchMeetup();
 
-        void trackAnalytics("FORM_SUBMIT", "meetup", meetup.startupHubId, { meetupId: meetup.id });
+        void trackAnalytics("FORM_SUBMIT", "meetup", meetup.govDepartmentId, { meetupId: meetup.id });
       } else if (res.error) {
         toast.error(res.error);
       } else {
@@ -205,18 +205,18 @@ export default function MeetupDetailPage() {
              <Separator className="bg-black/10" />
              <div className="pt-1">
                 <Link 
-                  href={`/explore/startup-hubs/${meetup.startupHubId}`}
+                  href={`/explore/gov-departments/${meetup.govDepartmentId}`}
                   className="flex items-center gap-3 w-full group"
                 >
                   <Avatar className="h-10 w-10 rounded-lg shrink-0 group-hover:opacity-80 transition-opacity">
-                    <AvatarImage src={meetup.startupHub?.image || ""} className="object-cover" />
+                    <AvatarImage src={meetup.govDepartment?.image || ""} className="object-cover" />
                     <AvatarFallback className="bg-[#1A1A2E] text-white font-black text-xs">
-                      {meetup.startupHub?.startupName?.charAt(0) || meetup.startupHub?.name?.charAt(0) || "SH"}
+                      {meetup.govDepartment?.startupName?.charAt(0) || meetup.govDepartment?.name?.charAt(0) || "SH"}
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-bold text-[#1A1A2E] whitespace-normal break-words group-hover:underline underline-offset-4">
-                      {meetup.startupHub?.startupName || meetup.startupHub?.name}
+                      {meetup.govDepartment?.startupName || meetup.govDepartment?.name}
                     </p>
                   </div>
                 </Link>

@@ -47,7 +47,7 @@ import { cn } from "@/lib/utils";
 import LogoutButton from "@/components/auth/logout-button";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useSidebar } from "@onlystartups/ui";
-import { getStartupHubData } from "@/actions/startup-hub";
+import { getGovDepartmentData } from "@/actions/gov-department";
 
 // Types
 interface NavItem {
@@ -337,8 +337,8 @@ export function DashboardSidebar() {
   const [isPublicView, setIsPublicView] = useState(false);
 
   useEffect(() => {
-    if (session?.user?.role === "STARTUP_HUB") {
-      getStartupHubData().then((res) => {
+    if (session?.user?.role === "GOV_DEPARTMENT") {
+      getGovDepartmentData().then((res) => {
         if (res && res.startups) {
           const sorted = res.startups.sort((a: any, b: any) => 
             (a.startupName || a.name || "").localeCompare(b.startupName || b.name || "")
@@ -381,7 +381,7 @@ export function DashboardSidebar() {
             href: "/explore", 
             icon: Compass,
             items: [
-              { name: "Startup Hubs", href: "/explore/startup-hubs" },
+              { name: "Startup Hubs", href: "/explore/gov-departments" },
               { name: "Programs", href: "/explore/programs" },
               { name: "Funding Opportunities", href: "/explore/funding-opportunities" },
               { name: "Events", href: "/explore/events" },
@@ -393,44 +393,44 @@ export function DashboardSidebar() {
       },
     ];
 
-    if (userRole === "STARTUP_HUB") {
+    if (userRole === "GOV_DEPARTMENT") {
       pubGroups.push({
         label: "Management",
         items: [
           {
             name: "Portfolio",
-            href: "/startup-hub/portfolio",
+            href: "/gov-department/portfolio",
             icon: UsersRound,
             items: [
-              { name: "Analytics", href: "/startup-hub/analytics" },
+              { name: "Analytics", href: "/gov-department/analytics" },
             ],
           },
           {
             name: "Active Startups",
-            href: "/startup-hub/portfolio",
+            href: "/gov-department/portfolio",
             icon: Layers,
             items: activeStartups.map(s => ({
               name: s.startupName || s.name || "Unnamed",
-              href: `/startup-hub/portfolio/${s.id}`
+              href: `/gov-department/portfolio/${s.id}`
             }))
           },
           {
             name: "Programs",
-            href: "/startup-hub/programs",
+            href: "/gov-department/programs",
             icon: FileText,
           },
           {
             name: "Mentors",
-            href: "/startup-hub/mentors",
+            href: "/gov-department/mentors",
             icon: Users2,
             items: [
-              { name: "Directory", href: "/startup-hub/mentors" },
-              { name: "Analytics", href: "/startup-hub/mentors/analytics" },
+              { name: "Directory", href: "/gov-department/mentors" },
+              { name: "Analytics", href: "/gov-department/mentors/analytics" },
             ],
           },
           {
             name: "Funding Opportunities",
-            href: "/startup-hub/funding-opportunities",
+            href: "/gov-department/funding-opportunities",
             icon: FileText,
           },
         ],
@@ -472,9 +472,9 @@ export function DashboardSidebar() {
       {
         label: "Platform Management",
         items: [
-          { name: "Events", href: "/startup-hub/events", icon: Calendar },
-          { name: "Programs", href: "/startup-hub/programs", icon: FileText },
-          { name: "Funding Opportunities", href: "/startup-hub/funding-opportunities", icon: FileText },
+          { name: "Events", href: "/gov-department/events", icon: Calendar },
+          { name: "Programs", href: "/gov-department/programs", icon: FileText },
+          { name: "Funding Opportunities", href: "/gov-department/funding-opportunities", icon: FileText },
           { name: "Content", href: "/content", icon: FileText },
           { name: "Communications", href: "/communications", icon: Bell },
           { name: "Settings", href: "/settings", icon: Settings },

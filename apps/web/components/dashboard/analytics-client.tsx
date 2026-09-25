@@ -36,11 +36,11 @@ export function AnalyticsClient({
     // Computed Stats
     const summary = useMemo(() => {
         const totalHits = initialStats.length;
-        const startupHubSubmits = initialStats.filter(s => s.type === "FORM_SUBMIT" && s.key === "startupHub_form").length;
+        const govDepartmentSubmits = initialStats.filter(s => s.type === "FORM_SUBMIT" && s.key === "govDepartment_form").length;
         const opportunitySubmits = initialStats.filter(s => s.type === "FORM_SUBMIT" && s.key === "funding_opportunity").length;
         const profileViews = initialStats.filter(s => s.type === "PROFILE_VIEW").length;
 
-        return { totalHits, startupHubSubmits, opportunitySubmits, profileViews };
+        return { totalHits, govDepartmentSubmits, opportunitySubmits, profileViews };
     }, [initialStats]);
 
     const getViewsByKey = (key: string) => initialStats.filter(s => s.key === key && s.type === "FORM_VIEW").length;
@@ -63,7 +63,7 @@ export function AnalyticsClient({
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {[
                     { label: "Total Funnel Hits", value: summary.totalHits, prefix: "" },
-                    { label: "StartupHub Submits", value: summary.startupHubSubmits, prefix: "" },
+                    { label: "GovDepartment Submits", value: summary.govDepartmentSubmits, prefix: "" },
                     { label: "Funding Opportunities", value: summary.opportunitySubmits, prefix: "" },
                     { label: "Profile Reach", value: summary.profileViews, prefix: "" },
                 ].map((item, i) => (
@@ -146,7 +146,7 @@ export function AnalyticsClient({
                                                     </td>
                                                     <td className="px-8 py-6 text-right">
                                                         <button
-                                                            onClick={() => (window.location.href = `/startup-hub/applications?type=meetup&id=${e.id}`)}
+                                                            onClick={() => (window.location.href = `/gov-department/applications?type=meetup&id=${e.id}`)}
                                                             className="p-3 rounded-xl bg-[#1A1A2E]/5 hover:bg-[#1A1A2E] hover:text-white transition-all"
                                                         >
                                                             <ChevronRight className="w-4 h-4" />
@@ -184,7 +184,7 @@ export function AnalyticsClient({
                                             </div>
                                         </div>
                                         <div className="text-left sm:text-right">
-                                            <p className="text-2xl sm:text-3xl font-black text-[#1A1A2E]">{getViewsByKey("startupHub_form")}</p>
+                                            <p className="text-2xl sm:text-3xl font-black text-[#1A1A2E]">{getViewsByKey("govDepartment_form")}</p>
                                             <p className="text-[9px] sm:text-[10px] font-bold text-[#1A1A2E]/40 uppercase tracking-widest">Initial Profile Context</p>
                                         </div>
                                     </div>
@@ -205,7 +205,7 @@ export function AnalyticsClient({
                                             </div>
                                         </div>
                                         <div className="text-left sm:text-right">
-                                            <p className="text-2xl sm:text-3xl font-black text-[#1A1A2E]">{getSubmitsByKey("startupHub_form")}</p>
+                                            <p className="text-2xl sm:text-3xl font-black text-[#1A1A2E]">{getSubmitsByKey("govDepartment_form")}</p>
                                             <p className="text-[9px] sm:text-[10px] font-bold text-[#1A1A2E]/40 uppercase tracking-widest">Converted Leads</p>
                                         </div>
                                     </div>
@@ -217,8 +217,8 @@ export function AnalyticsClient({
                                     <h4 className="text-[10px] sm:text-sm font-black uppercase tracking-[0.3em] opacity-60 mb-4">Master Conversion</h4>
                                     <div className="flex items-baseline gap-2">
                                         <h3 className="text-5xl sm:text-7xl font-black">
-                                            {getViewsByKey("startupHub_form") > 0
-                                                ? ((getSubmitsByKey("startupHub_form") / getViewsByKey("startupHub_form")) * 100).toFixed(1)
+                                            {getViewsByKey("govDepartment_form") > 0
+                                                ? ((getSubmitsByKey("govDepartment_form") / getViewsByKey("govDepartment_form")) * 100).toFixed(1)
                                                 : "0"}
                                         </h3>
                                         <span className="text-xl sm:text-2xl font-black opacity-40">%</span>
@@ -232,13 +232,13 @@ export function AnalyticsClient({
                                     <Card className="border-none shadow-sm bg-white p-6 rounded-xl">
                                         <p className="text-[10px] font-black text-[#1A1A2E]/40 uppercase tracking-widest">Link Pops</p>
                                         <p className="text-lg sm:text-xl font-black text-[#1A1A2E] mt-1">
-                                            {initialStats.filter(s => s.key === "startupHub_form" && s.type === "LINK_TAP").length}
+                                            {initialStats.filter(s => s.key === "govDepartment_form" && s.type === "LINK_TAP").length}
                                         </p>
                                     </Card>
                                     <Card className="border-none shadow-sm bg-white p-6 rounded-xl">
                                         <p className="text-[10px] font-black text-[#1A1A2E]/40 uppercase tracking-widest">QR Syncs</p>
                                         <p className="text-lg sm:text-xl font-black text-[#1A1A2E] mt-1">
-                                            {initialStats.filter(s => s.key === "startupHub_form" && s.type === "QR_DOWNLOAD").length}
+                                            {initialStats.filter(s => s.key === "govDepartment_form" && s.type === "QR_DOWNLOAD").length}
                                         </p>
                                     </Card>
                                 </div>
@@ -257,7 +257,7 @@ export function AnalyticsClient({
                                 <div className="text-right max-w-xs">
                                     <h3 className="text-xl sm:text-2xl font-black text-[#1A1A2E] tracking-tight">Profile Reach Access</h3>
                                     <p className="text-xs text-[#1A1A2E]/50 font-medium mt-2">
-                                        Total unique visits recorded for your startupHub profile.
+                                        Total unique visits recorded for your govDepartment profile.
                                     </p>
                                 </div>
                             </div>

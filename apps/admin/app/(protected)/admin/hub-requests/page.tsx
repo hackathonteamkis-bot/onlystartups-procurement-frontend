@@ -44,7 +44,7 @@ interface HubRequest {
   name: string;
   email: string;
   phone: string | null;
-  startupHubName: string;
+  govDepartmentName: string;
   details: string | null;
   status: string;
   createdAt: Date;
@@ -98,7 +98,7 @@ export default function HubRequestsPage() {
     try {
       const res = await approveHubRequest(selectedRequest.id, session.accessToken);
       if (res.success) {
-        toast.success(`Approved request for ${selectedRequest.startupHubName}`);
+        toast.success(`Approved request for ${selectedRequest.govDepartmentName}`);
         setGeneratedCredentials({
           email: selectedRequest.email,
           tempPassword: res.data.tempPassword,
@@ -119,7 +119,7 @@ export default function HubRequestsPage() {
     try {
       const res = await rejectHubRequest(req.id, session.accessToken);
       if (res.success) {
-        toast.success(`Rejected request for ${req.startupHubName}`);
+        toast.success(`Rejected request for ${req.govDepartmentName}`);
         fetchData();
       } else {
         toast.error(res.error);
@@ -134,7 +134,7 @@ export default function HubRequestsPage() {
     try {
       const res = await blockHubRequest(req.id, session.accessToken);
       if (res.success) {
-        toast.success(`Blocked request for ${req.startupHubName}`);
+        toast.success(`Blocked request for ${req.govDepartmentName}`);
         fetchData();
       } else {
         toast.error(res.error);
@@ -180,7 +180,7 @@ export default function HubRequestsPage() {
               <TableBody>
                 {requests.map((req) => (
                   <TableRow key={req.id} className="hover:bg-[#1A1A2E]/5">
-                    <TableCell className="font-medium">{req.startupHubName}</TableCell>
+                    <TableCell className="font-medium">{req.govDepartmentName}</TableCell>
                     <TableCell>{req.name}</TableCell>
                     <TableCell>{req.email}</TableCell>
                     <TableCell>
@@ -260,7 +260,7 @@ export default function HubRequestsPage() {
               <DialogHeader>
                 <DialogTitle>Approve Startup Hub</DialogTitle>
                 <DialogDescription>
-                  Review the application for {selectedRequest?.startupHubName}.
+                  Review the application for {selectedRequest?.govDepartmentName}.
                 </DialogDescription>
               </DialogHeader>
               <div className="py-4 space-y-4">
@@ -286,7 +286,7 @@ export default function HubRequestsPage() {
                 )}
                 <div className="pt-4 border-t border-[#1A1A2E]/10">
                   <p className="text-sm text-[#1A1A2E]/80">
-                    Approving this request will automatically generate a new user account with the <b>STARTUP_HUB</b> role. You will be provided with a secure temporary password to share with them securely.
+                    Approving this request will automatically generate a new user account with the <b>GOV_DEPARTMENT</b> role. You will be provided with a secure temporary password to share with them securely.
                   </p>
                 </div>
               </div>
@@ -316,7 +316,7 @@ export default function HubRequestsPage() {
                 <div className="bg-[#1A1A2E]/5 p-4 rounded-lg space-y-3">
                   <div>
                     <span className="text-xs font-semibold text-[#1A1A2E]/60">Login URL</span>
-                    <p className="font-mono text-sm mt-1">https://startuphub.onlystartups.com</p>
+                    <p className="font-mono text-sm mt-1">https://gov-department.onlystartups.com</p>
                   </div>
                   <div>
                     <span className="text-xs font-semibold text-[#1A1A2E]/60">Email</span>

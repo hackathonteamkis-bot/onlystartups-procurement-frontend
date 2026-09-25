@@ -91,9 +91,9 @@ export function HubSpotClient({ data }: { data: HubSpotData }) {
   const hubName = data.hub.startupName || data.hub.name;
   
   // Extract socials
-  const twitterUrl = data.hub.twitter || data.hub.startupHubSocials?.twitter || data.hub.startupHubSocials?.x;
-  const linkedinUrl = data.hub.linkedin || data.hub.startupHubSocials?.linkedin;
-  const instagramUrl = data.hub.instagram || data.hub.startupHubSocials?.instagram;
+  const twitterUrl = data.hub.twitter || data.hub.govDepartmentSocials?.twitter || data.hub.govDepartmentSocials?.x;
+  const linkedinUrl = data.hub.linkedin || data.hub.govDepartmentSocials?.linkedin;
+  const instagramUrl = data.hub.instagram || data.hub.govDepartmentSocials?.instagram;
   const hasSocials = !!(twitterUrl || linkedinUrl || instagramUrl);
 
   return (

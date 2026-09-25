@@ -42,7 +42,7 @@ export default auth((req) => {
   // Redirect logged-in users from the landing page ("/") to the dashboard page
   if (nextUrl.pathname === "/" && isLoggedIn) {
     const userRole = req.auth?.user?.role;
-    if (userRole === "ADMIN" || userRole === "STARTUP_HUB") {
+    if (userRole === "ADMIN" || userRole === "GOV_DEPARTMENT") {
       return Response.redirect(new URL("/auth/error?error=AccessDenied", nextUrl));
     }
     return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
@@ -50,7 +50,7 @@ export default auth((req) => {
 
   if (isLoggedIn && !isPublicRoute) {
     const userRole = req.auth?.user?.role;
-    if (userRole === "ADMIN" || userRole === "STARTUP_HUB") {
+    if (userRole === "ADMIN" || userRole === "GOV_DEPARTMENT") {
       return Response.redirect(new URL("/auth/error?error=AccessDenied", nextUrl));
     }
   }

@@ -34,7 +34,7 @@ export default function GrantApplyPage() {
       try {
         const res = await getGrantById(params.id as string);
         if ("error" in res) {
-          toast.error("Funding Opportunity not found.");
+          toast.error("Pilot & Tender not found.");
           router.push("/explore");
         } else if (res.applyUrl) {
           window.location.replace(res.applyUrl);

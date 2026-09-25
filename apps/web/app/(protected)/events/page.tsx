@@ -2,17 +2,17 @@ export const dynamic = "force-dynamic";
 
 import { auth } from "@/auth";
 import { UserRole } from "@/schemas";
-import { getMeetups, getStartupHubMeetupRegistrations } from "@/actions/events";
+import { getMeetups, getGovDepartmentMeetupRegistrations } from "@/actions/events";
 import { PageHeader } from "@/components/shared/page-header";
 import { EventsClient } from "@/components/events/events-client";
 
 export default async function MeetupsPage() {
   const session = await auth();
-  const isStartupHub = session?.user?.role === UserRole.STARTUP_HUB;
+  const isGovDepartment = session?.user?.role === UserRole.GOV_DEPARTMENT;
 
   const [allMeetups, hostedMeetupsResult] = await Promise.all([
     getMeetups(),
-    isStartupHub ? getStartupHubMeetupRegistrations() : Promise.resolve([]),
+    isGovDepartment ? getGovDepartmentMeetupRegistrations() : Promise.resolve([]),
   ]);
 
   const hostedMeetups =
@@ -28,7 +28,7 @@ export default async function MeetupsPage() {
       <EventsClient
         initialMeetups={allMeetups}
         initialHostedMeetups={hostedMeetups}
-        isStartupHub={isStartupHub}
+        isGovDepartment={isGovDepartment}
       />
     </div>
   );

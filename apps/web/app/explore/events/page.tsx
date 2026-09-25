@@ -27,7 +27,7 @@ interface Meetup {
   location: string;
   image?: string;
   isApplied?: boolean;
-  startupHub: {
+  govDepartment: {
     name: string;
     startupName?: string;
     image?: string;
@@ -60,7 +60,7 @@ export default function ExploreMeetupsPage() {
     (m) =>
       m.title.toLowerCase().includes(search.toLowerCase()) ||
       m.location.toLowerCase().includes(search.toLowerCase()) ||
-      (m.startupHub?.startupName || "")
+      (m.govDepartment?.startupName || "")
         .toLowerCase()
         .includes(search.toLowerCase()),
   );
@@ -119,8 +119,8 @@ export default function ExploreMeetupsPage() {
           Back to Explore
         </Link>
         <PageHeader
-          title="Events"
-          description="Connect with founders through sessions, masterclasses, and mixers."
+          title="Briefings & Workshops"
+          description="Connect with government departments through sessions and briefings."
         >
           <div className="relative w-full sm:w-[320px] group">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground transition-colors group-focus-within:text-primary z-10" />
@@ -244,7 +244,7 @@ function MeetupCard({
             {meetup.title}
           </h3>
           <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide flex items-center gap-1.5">
-            By {meetup.startupHub?.startupName || meetup.startupHub?.name}
+            By {meetup.govDepartment?.startupName || meetup.govDepartment?.name}
           </p>
         </div>
 

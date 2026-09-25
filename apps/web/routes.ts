@@ -9,7 +9,7 @@ export const publicRoutes = [
   "/os-daily", 
   "/fix-this",
   "/explore",
-  "/explore/startup-hubs",
+  "/explore/gov-departments",
   "/explore/funding-opportunities",
   "/explore/events",
   "/explore/resources",

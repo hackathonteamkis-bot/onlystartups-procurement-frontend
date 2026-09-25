@@ -15,13 +15,13 @@ export default async function JoinPage({ params }: JoinPageProps) {
 
     // Track the hit only if it's NOT a self-visit
     // If user is not logged in, we count it (likely a new founder)
-    // If logged in, we check if they are the startupHub
+    // If logged in, we check if they are the govDepartment
     const isSelfVisit = session?.user?.id === id;
 
     if (!isSelfVisit) {
-        await trackAnalytics("LINK_TAP", "startupHub_form", id, { source: "direct_link" });
+        await trackAnalytics("LINK_TAP", "govDepartment_form", id, { source: "direct_link" });
     }
 
-    // Redirect to the startupHub application/profile page
-    redirect(`/explore/startup-hubs/${id}`);
+    // Redirect to the govDepartment application/profile page
+    redirect(`/explore/gov-departments/${id}`);
 }

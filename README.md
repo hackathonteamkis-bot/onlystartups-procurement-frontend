@@ -19,7 +19,7 @@ A structured end-to-end mechanism for challenge identification, startup discover
 This frontend is structured as a **Turborepo** containing multiple Next.js applications:
 - **`apps/web`**: Public-facing platform for startups and general exploration.
 - **`apps/admin`**: Administrative dashboard for government officials and platform moderators.
-- **`apps/startuphub`**: Dedicated portal for startup hubs and incubators to manage and track programs.
+- **`apps/gov-department`**: Dedicated portal for startup hubs and incubators to manage and track programs.
 
 **Tech Stack:**
 - Framework: [Next.js](https://nextjs.org/) (React)
@@ -40,7 +40,7 @@ npm install
 ```
 
 ### 3. Environment Variables
-Copy the `.env.sample` into each app directory (`apps/web/.env`, `apps/admin/.env`, `apps/startuphub/.env`) and update the values with your actual API URLs and Supabase keys.
+Copy the `.env.sample` into each app directory (`apps/web/.env`, `apps/admin/.env`, `apps/gov-department/.env`) and update the values with your actual API URLs and Supabase keys.
 
 ### 4. Running Locally
 To start the development server for all apps simultaneously:

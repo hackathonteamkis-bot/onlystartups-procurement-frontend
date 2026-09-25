@@ -35,8 +35,8 @@ export function ProgramsListingClient({ initialPrograms }: ProgramsListingClient
   const organizations = useMemo(() => {
     const orgs = new Set<string>();
     initialPrograms.forEach((program) => {
-      if (program.startupHub?.name) {
-        orgs.add(program.startupHub.name);
+      if (program.govDepartment?.name) {
+        orgs.add(program.govDepartment.name);
       }
     });
     return Array.from(orgs).sort();
@@ -67,8 +67,8 @@ export function ProgramsListingClient({ initialPrograms }: ProgramsListingClient
   const filteredPrograms = useMemo(() => {
     return initialPrograms.filter((program) => {
       const matchesSearch = program.name?.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                            program.startupHub?.name?.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesOrg = selectedOrgs.length === 0 || selectedOrgs.includes(program.startupHub?.name);
+                            program.govDepartment?.name?.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesOrg = selectedOrgs.length === 0 || selectedOrgs.includes(program.govDepartment?.name);
       const matchesDuration = selectedDurations.length === 0 || (program.programDuration && selectedDurations.includes(program.programDuration));
       
       let matchesRecentlyOpened = true;
@@ -270,8 +270,8 @@ export function ProgramsListingClient({ initialPrograms }: ProgramsListingClient
                     
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-lg border border-muted/40 overflow-hidden relative bg-white flex items-center justify-center p-1 shadow-sm shrink-0">
-                        {program.startupHub?.image ? (
-                          <Image src={program.startupHub.image} alt={program.startupHub.name} fill className="object-cover" />
+                        {program.govDepartment?.image ? (
+                          <Image src={program.govDepartment.image} alt={program.govDepartment.name} fill className="object-cover" />
                         ) : (
                           <Building2 className="w-4 h-4 text-muted-foreground/40" />
                         )}
@@ -279,7 +279,7 @@ export function ProgramsListingClient({ initialPrograms }: ProgramsListingClient
                       <div className="overflow-hidden">
                         <p className="text-[9px] font-black text-[#1A1A2E]/40 uppercase tracking-tighter mb-0.5">Managed By</p>
                         <p className="text-xs font-bold text-[#1A1A2E] truncate">
-                          {program.startupHub?.name}
+                          {program.govDepartment?.name}
                         </p>
                       </div>
                     </div>
@@ -294,7 +294,7 @@ export function ProgramsListingClient({ initialPrograms }: ProgramsListingClient
 
                   <div className="mt-6 flex items-center gap-2 sm:gap-3">
                     <Link
-                      href={`/explore/startup-hubs/${program.startupHubId}/programs/${program.id}`}
+                      href={`/explore/gov-departments/${program.govDepartmentId}/programs/${program.id}`}
                       className="flex-1 py-2 sm:py-2.5 border-2 border-muted/60 text-[10px] sm:text-xs font-bold rounded-lg text-[#1A1A2E] hover:border-[#1A1A2E] transition-all text-center"
                     >
                       View details
@@ -302,8 +302,8 @@ export function ProgramsListingClient({ initialPrograms }: ProgramsListingClient
                     
                     {program.status === 'INTAKE' && !(program.applicationDeadline && new Date(program.applicationDeadline) < new Date()) ? (
                       <Link
-                        href={program.applyUrl || `/explore/startup-hubs/${program.startupHubId}/programs/${program.id}/apply`}
-                        onClick={(e) => requireAuth(e, program.applyUrl ? `/explore/startup-hubs/${program.startupHubId}/programs/${program.id}` : `/explore/startup-hubs/${program.startupHubId}/programs/${program.id}/apply`)}
+                        href={program.applyUrl || `/explore/gov-departments/${program.govDepartmentId}/programs/${program.id}/apply`}
+                        onClick={(e) => requireAuth(e, program.applyUrl ? `/explore/gov-departments/${program.govDepartmentId}/programs/${program.id}` : `/explore/gov-departments/${program.govDepartmentId}/programs/${program.id}/apply`)}
                         target={program.applyUrl ? "_blank" : undefined}
                         rel={program.applyUrl ? "noopener noreferrer" : undefined}
                         className="flex-1 py-2 sm:py-2.5 bg-[#F26522] text-white text-[10px] sm:text-xs font-bold rounded-lg hover:brightness-110 transition-all text-center shadow-sm"

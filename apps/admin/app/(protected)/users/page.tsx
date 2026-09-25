@@ -214,7 +214,7 @@ export default function AdminPage() {
     switch (role) {
       case "ADMIN":
         return "bg-purple-500/10 text-purple-600 border-purple-500/20";
-      case "STARTUP_HUB":
+      case "GOV_DEPARTMENT":
         return "bg-blue-500/10 text-blue-600 border-blue-500/20";
       default:
         return "bg-gray-500/10 text-gray-600 border-gray-500/20";
@@ -472,7 +472,7 @@ export default function AdminPage() {
                   <SelectItem value="all">All Roles</SelectItem>
                   <SelectItem value="USER">User</SelectItem>
                   <SelectItem value="ADMIN">Admin</SelectItem>
-                  <SelectItem value="STARTUP_HUB">Startup Hub</SelectItem>
+                  <SelectItem value="GOV_DEPARTMENT">Startup Hub</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -632,7 +632,7 @@ export default function AdminPage() {
               <SelectContent>
                 <SelectItem value="USER">User</SelectItem>
                 <SelectItem value="ADMIN">Admin</SelectItem>
-                <SelectItem value="STARTUP_HUB">Startup Hub</SelectItem>
+                <SelectItem value="GOV_DEPARTMENT">Startup Hub</SelectItem>
               </SelectContent>
             </Select>
           </div>

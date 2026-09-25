@@ -19,8 +19,8 @@ export const registerForMeetup = async (meetupId: string) => {
   });
 };
 
-export const getStartupHubMeetupRegistrations = async () => {
-  return fetchWithAuth('/events/startup-hub/registrations');
+export const getGovDepartmentMeetupRegistrations = async () => {
+  return fetchWithAuth('/events/gov-department/registrations');
 };
 
 export const updateMeetupRegistrationStatus = async (

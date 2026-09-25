@@ -70,22 +70,22 @@ export const {
         session.user.thesis = (token.thesis as string) || null;
         session.user.thesisAnswers =
           (token.thesisAnswers as Record<string, string>) || null;
-        // StartupHub profile fields
+        // GovDepartment profile fields
         session.user.activeStartups = (token.activeStartups as string) || null;
         session.user.totalExits = (token.totalExits as string) || null;
         session.user.fundingRaised = (token.fundingRaised as string) || null;
         session.user.mentorCount = (token.mentorCount as string) || null;
         session.user.networkSize = (token.networkSize as string) || null;
-        session.user.startupHubQuote =
-          (token.startupHubQuote as string) || null;
+        session.user.govDepartmentQuote =
+          (token.govDepartmentQuote as string) || null;
         session.user.websiteUrl = (token.websiteUrl as string) || null;
         session.user.location = (token.location as string) || null;
         session.user.sectors = (token.sectors as string[]) || [];
         session.user.programDuration =
           (token.programDuration as string) || null;
         session.user.equityTaken = (token.equityTaken as string) || null;
-        session.user.startupHubSocials =
-          (token.startupHubSocials as Record<string, string>) || null;
+        session.user.govDepartmentSocials =
+          (token.govDepartmentSocials as Record<string, string>) || null;
         session.user.applicationQuestions =
           (token.applicationQuestions as any) || null;
         session.user.applicationFormActive =
@@ -123,7 +123,7 @@ export const {
             if (response.ok) {
               const backendData = await response.json();
               if (
-                backendData?.user?.role === "STARTUP_HUB" ||
+                backendData?.user?.role === "GOV_DEPARTMENT" ||
                 backendData?.user?.role === "ADMIN"
               ) {
                 throw new Error("AccessDenied");
@@ -193,7 +193,7 @@ export const {
             if (response.ok) {
               const backendData = await response.json();
               if (
-                backendData?.user?.role === "STARTUP_HUB" ||
+                backendData?.user?.role === "GOV_DEPARTMENT" ||
                 backendData?.user?.role === "ADMIN"
               ) {
                 return { ...token, accessToken: undefined };
@@ -260,7 +260,7 @@ export const {
           try {
             const data = JSON.parse(credentials.backendResponse as string);
             if (
-              data?.user?.role === "STARTUP_HUB" ||
+              data?.user?.role === "GOV_DEPARTMENT" ||
               data?.user?.role === "ADMIN"
             ) {
               throw new Error("AccessDenied");
@@ -283,7 +283,7 @@ export const {
           if (response.ok) {
             const data = await response.json();
             if (
-              data?.user?.role === "STARTUP_HUB" ||
+              data?.user?.role === "GOV_DEPARTMENT" ||
               data?.user?.role === "ADMIN"
             ) {
               throw new Error("AccessDenied");

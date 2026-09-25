@@ -3,18 +3,18 @@
 import { fetchWithAuth } from "@/lib/api";
 import { revalidatePath } from "next/cache";
 
-export const applyToStartupHub = async (data: {
-  startupHubId: string;
+export const applyToGovDepartment = async (data: {
+  govDepartmentId: string;
   message?: string;
   pitchUrl?: string;
   startupStage?: string;
   answers?: Record<string, any>;
 }) => {
-  const res = await fetchWithAuth('/applications/startup-hub', {
+  const res = await fetchWithAuth('/applications/gov-department', {
     method: 'POST',
     body: JSON.stringify(data),
   });
-  revalidatePath(`/explore/startup-hubs/${data.startupHubId}`);
+  revalidatePath(`/explore/gov-departments/${data.govDepartmentId}`);
   return res;
 };
 
@@ -22,7 +22,7 @@ export const applyToGrant = async (data: {
   opportunityId: string;
   message: string;
 }) => {
-  return fetchWithAuth('/applications/funding-opportunity', {
+  return fetchWithAuth('/applications/funding-contract', {
     method: 'POST',
     body: JSON.stringify(data),
   });
@@ -30,22 +30,22 @@ export const applyToGrant = async (data: {
 
 export const applyToProgram = async (data: {
   programId: string;
-  startupHubId: string;
+  govDepartmentId: string;
   message?: string;
   pitchUrl?: string;
   startupStage?: string;
   answers?: Record<string, any>;
 }) => {
-  const res = await fetchWithAuth('/applications/program', {
+  const res = await fetchWithAuth('/applications/problemStatement', {
     method: 'POST',
     body: JSON.stringify(data),
   });
-  revalidatePath(`/explore/startup-hubs/${data.startupHubId}/programs/${data.programId}`);
+  revalidatePath(`/explore/gov-departments/${data.govDepartmentId}/programs/${data.programId}`);
   return res;
 };
 
-export const getStartupHubApplications = async () => {
-  return fetchWithAuth('/applications/startup-hub');
+export const getGovDepartmentApplications = async () => {
+  return fetchWithAuth('/applications/gov-department');
 };
 
 export const getApplicationsData = async () => {
@@ -66,7 +66,7 @@ export const updateFundingOpportunityApplicationStatus = async (
   applicationId: string,
   status: "APPROVED" | "REJECTED",
 ) => {
-  return fetchWithAuth(`/applications/funding-opportunity/${applicationId}/status`, {
+  return fetchWithAuth(`/applications/funding-contract/${applicationId}/status`, {
     method: 'PATCH',
     body: JSON.stringify({ status }),
   });
@@ -81,17 +81,17 @@ export const getApplicationById = async (applicationId: string) => {
   }
 };
 
-export const getActiveProgram = async (startupHubId: string) => {
+export const getActiveProgram = async (govDepartmentId: string) => {
   try {
-    return await fetchWithAuth(`/programs/hub/${startupHubId}/active`);
+    return await fetchWithAuth(`/problemStatements/hub/${govDepartmentId}/active`);
   } catch (error) {
     return null;
   }
 };
 
-export const getPublicPrograms = async (startupHubId: string) => {
+export const getPublicPrograms = async (govDepartmentId: string) => {
   try {
-    return await fetchWithAuth(`/programs/hub/${startupHubId}/public`);
+    return await fetchWithAuth(`/problemStatements/hub/${govDepartmentId}/public`);
   } catch (error) {
     return [];
   }

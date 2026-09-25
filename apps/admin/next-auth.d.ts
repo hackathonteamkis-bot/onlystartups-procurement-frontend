@@ -29,13 +29,13 @@ export type ExtendedUser = {
   fundingRaised: string | null;
   mentorCount: string | null;
   networkSize: string | null;
-  startupHubQuote: string | null;
+  govDepartmentQuote: string | null;
   websiteUrl: string | null;
   location: string | null;
   sectors: string[];
   programDuration: string | null;
   equityTaken: string | null;
-  startupHubSocials: Record<string, string> | null;
+  govDepartmentSocials: Record<string, string> | null;
   applicationQuestions: any;
   applicationFormActive: boolean;
 } & DefaultSession["user"];
@@ -72,13 +72,13 @@ declare module "next-auth/jwt" {
     fundingRaised?: string | null;
     mentorCount?: string | null;
     networkSize?: string | null;
-    startupHubQuote?: string | null;
+    govDepartmentQuote?: string | null;
     websiteUrl?: string | null;
     location?: string | null;
     sectors?: string[];
     programDuration?: string | null;
     equityTaken?: string | null;
-    startupHubSocials?: Record<string, string> | null;
+    govDepartmentSocials?: Record<string, string> | null;
     applicationQuestions?: any;
     applicationFormActive?: boolean;
   }

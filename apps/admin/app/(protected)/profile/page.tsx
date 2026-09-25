@@ -217,19 +217,19 @@ export default function ProfilePage() {
   const [yearsOfExperience, setYearsOfExperience] = useState("");
   const [skills, setSkills] = useState<string[]>([]);
 
-  // StartupHub profile fields
+  // GovDepartment profile fields
   const [activeStartups, setActiveStartups] = useState("");
   const [totalExits, setTotalExits] = useState("");
   const [fundingRaised, setFundingRaised] = useState("");
   const [mentorCount, setMentorCount] = useState("");
   const [networkSize, setNetworkSize] = useState("");
-  const [startupHubQuote, setStartupHubQuote] = useState("");
+  const [govDepartmentQuote, setGovDepartmentQuote] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
   const [location, setLocation] = useState("");
   const [sectors, setSectors] = useState<string[]>([]);
   const [programDuration, setProgramDuration] = useState("");
   const [equityTaken, setEquityTaken] = useState("");
-  const [startupHubSocials, setStartupHubSocials] = useState<Record<string, string>>({});
+  const [govDepartmentSocials, setGovDepartmentSocials] = useState<Record<string, string>>({});
 
   // Memoize initial values to track changes
   const initialValues = useMemo(() => {
@@ -251,7 +251,7 @@ export default function ProfilePage() {
       fundingRaised: session.user.fundingRaised || "",
       mentorCount: session.user.mentorCount || "",
       networkSize: session.user.networkSize || "",
-      startupHubQuote: session.user.startupHubQuote || "",
+      govDepartmentQuote: session.user.govDepartmentQuote || "",
       websiteUrl: session.user.websiteUrl || "",
       title: session.user.title || "",
       yearsOfExperience: session.user.yearsOfExperience || "",
@@ -260,7 +260,7 @@ export default function ProfilePage() {
       sectors: session.user.sectors || [],
       programDuration: session.user.programDuration || "",
       equityTaken: session.user.equityTaken || "",
-      startupHubSocials: session.user.startupHubSocials || {},
+      govDepartmentSocials: session.user.govDepartmentSocials || {},
     };
   }, [session]);
 
@@ -283,7 +283,7 @@ export default function ProfilePage() {
       fundingRaised !== initialValues.fundingRaised ||
       mentorCount !== initialValues.mentorCount ||
       networkSize !== initialValues.networkSize ||
-      startupHubQuote !== initialValues.startupHubQuote ||
+      govDepartmentQuote !== initialValues.govDepartmentQuote ||
       websiteUrl !== initialValues.websiteUrl ||
       title !== initialValues.title ||
       yearsOfExperience !== initialValues.yearsOfExperience ||
@@ -292,7 +292,7 @@ export default function ProfilePage() {
       JSON.stringify(sectors) !== JSON.stringify(initialValues.sectors) ||
       programDuration !== initialValues.programDuration ||
       equityTaken !== initialValues.equityTaken ||
-      JSON.stringify(startupHubSocials) !== JSON.stringify(initialValues.startupHubSocials)
+      JSON.stringify(govDepartmentSocials) !== JSON.stringify(initialValues.govDepartmentSocials)
     );
   }, [
     firstName,
@@ -311,7 +311,7 @@ export default function ProfilePage() {
     fundingRaised,
     mentorCount,
     networkSize,
-    startupHubQuote,
+    govDepartmentQuote,
     websiteUrl,
     title,
     yearsOfExperience,
@@ -320,7 +320,7 @@ export default function ProfilePage() {
     sectors,
     programDuration,
     equityTaken,
-    startupHubSocials,
+    govDepartmentSocials,
     initialValues,
   ]);
 
@@ -346,19 +346,19 @@ export default function ProfilePage() {
       setYearsOfExperience(user.yearsOfExperience || "");
       setSkills(user.skills || []);
 
-      // StartupHub fields
+      // GovDepartment fields
       setActiveStartups(user.activeStartups || "");
       setTotalExits(user.totalExits || "");
       setFundingRaised(user.fundingRaised || "");
       setMentorCount(user.mentorCount || "");
       setNetworkSize(user.networkSize || "");
-      setStartupHubQuote(user.startupHubQuote || "");
+      setGovDepartmentQuote(user.govDepartmentQuote || "");
       setWebsiteUrl(user.websiteUrl || "");
       setLocation(user.location || "");
       setSectors(user.sectors || []);
       setProgramDuration(user.programDuration || "");
       setEquityTaken(user.equityTaken || "");
-      setStartupHubSocials(user.startupHubSocials || {});
+      setGovDepartmentSocials(user.govDepartmentSocials || {});
     }
   }, [session]);
 
@@ -380,7 +380,7 @@ export default function ProfilePage() {
       fundingRaised,
       mentorCount,
       networkSize,
-      startupHubQuote,
+      govDepartmentQuote,
       websiteUrl,
       title,
       yearsOfExperience,
@@ -389,7 +389,7 @@ export default function ProfilePage() {
       sectors,
       programDuration,
       equityTaken,
-      startupHubSocials,
+      govDepartmentSocials,
       ...additionalValues,
     };
 
@@ -660,8 +660,8 @@ export default function ProfilePage() {
                   className="bg-[#F26522]/10 text-[#F26522] border-none whitespace-nowrap text-[9px] sm:text-xs font-black uppercase tracking-widest px-2 py-0.5"
                 >
                   {session?.user?.startupName ||
-                    (session?.user?.role === "STARTUP_HUB"
-                      ? "StartupHub"
+                    (session?.user?.role === "GOV_DEPARTMENT"
+                      ? "GovDepartment"
                       : "Founder")}
                 </Badge>
               </div>
@@ -679,8 +679,8 @@ export default function ProfilePage() {
                 {
                   id: "startup",
                   label:
-                    session?.user?.role === "STARTUP_HUB"
-                      ? "StartupHub Profile"
+                    session?.user?.role === "GOV_DEPARTMENT"
+                      ? "GovDepartment Profile"
                       : "Startup",
                   icon: Rocket,
                 },
@@ -863,7 +863,7 @@ export default function ProfilePage() {
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
                       placeholder={
-                        session?.user?.role === "STARTUP_HUB"
+                        session?.user?.role === "GOV_DEPARTMENT"
                           ? "e.g. Program Director, Venture Lead"
                           : "e.g. CEO & Founder, CTO"
                       }
@@ -959,8 +959,8 @@ export default function ProfilePage() {
                     htmlFor="bio"
                     className="text-[10px] font-black text-[#1A1A2E]/40 uppercase ml-1 tracking-widest"
                   >
-                    {session?.user?.role === "STARTUP_HUB"
-                      ? "StartupHub Bio / Manager Bio"
+                    {session?.user?.role === "GOV_DEPARTMENT"
+                      ? "GovDepartment Bio / Manager Bio"
                       : "Startup Vision / Bio"}
                   </Label>
                   <textarea
@@ -1070,13 +1070,13 @@ export default function ProfilePage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <CardTitle className="text-xl sm:text-2xl font-black tracking-tighter text-[#1A1A2E]">
-                      {session?.user?.role === "STARTUP_HUB"
-                        ? "StartupHub Profile"
+                      {session?.user?.role === "GOV_DEPARTMENT"
+                        ? "GovDepartment Profile"
                         : "Venture Profile"}
                     </CardTitle>
                     <CardDescription className="font-medium text-[#1A1A2E]/50">
-                      {session?.user?.role === "STARTUP_HUB"
-                        ? "Define your startupHub's mission and portfolio focus."
+                      {session?.user?.role === "GOV_DEPARTMENT"
+                        ? "Define your govDepartment's mission and portfolio focus."
                         : "Define your startup thesis and trajectory."}
                     </CardDescription>
                   </div>
@@ -1084,19 +1084,19 @@ export default function ProfilePage() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-6 px-5 sm:px-8 pb-8 pt-2">
-                {session?.user?.role === "STARTUP_HUB" ? (
+                {session?.user?.role === "GOV_DEPARTMENT" ? (
                   <div className="space-y-2">
                     <Label
                       htmlFor="startupName"
                       className="text-[10px] font-black text-[#1A1A2E]/40 uppercase ml-1 tracking-widest"
                     >
-                      StartupHub Name
+                      GovDepartment Name
                     </Label>
                     <Input
                       id="startupName"
                       value={startupName}
                       onChange={(e) => setStartupName(e.target.value)}
-                      placeholder="StartupHub Entity Name"
+                      placeholder="GovDepartment Entity Name"
                       className="bg-[#F5F5EE]/50 border-none h-12 sm:h-14 rounded-xl font-bold focus-visible:ring-4 focus-visible:ring-[#F26522]/10 shadow-sm"
                       disabled={isPending}
                     />
@@ -1156,8 +1156,8 @@ export default function ProfilePage() {
                     htmlFor="startupDescription"
                     className="text-[10px] font-black text-[#1A1A2E]/40 uppercase ml-1 tracking-widest"
                   >
-                    {session?.user?.role === "STARTUP_HUB"
-                      ? "StartupHub Vision / Mission"
+                    {session?.user?.role === "GOV_DEPARTMENT"
+                      ? "GovDepartment Vision / Mission"
                       : "Executive Summary / Venture Thesis"}
                   </Label>
                   <textarea
@@ -1167,23 +1167,23 @@ export default function ProfilePage() {
                     onChange={(e) => setStartupDescription(e.target.value)}
                     className="w-full min-h-[160px] rounded-2xl border-none bg-[#F5F5EE]/50 px-4 py-4 text-sm font-bold focus:outline-none focus:ring-4 focus:ring-[#F26522]/10 transition-all shadow-inner"
                     placeholder={
-                      session?.user?.role === "STARTUP_HUB"
-                        ? "Define your startupHub's mission, the value you provide to startups, and your selection philosophy..."
+                      session?.user?.role === "GOV_DEPARTMENT"
+                        ? "Define your govDepartment's mission, the value you provide to startups, and your selection philosophy..."
                         : "Tell us about the problem you are solving, the market size, and your unique approach... This helps other founders understand how to collaborate with you."
                     }
                     disabled={isPending}
                   />
                 </div>
 
-                {/* StartupHub-only: Public Profile Fields */}
-                {session?.user?.role === "STARTUP_HUB" && (
+                {/* GovDepartment-only: Public Profile Fields */}
+                {session?.user?.role === "GOV_DEPARTMENT" && (
                   <>
                     <Separator className="my-2 bg-[#1A1A2E]/5" />
                     <h3 className="text-sm font-black text-[#1A1A2E] uppercase tracking-widest pt-2">
                       Public Profile Stats
                     </h3>
                     <p className="text-xs text-muted-foreground -mt-4">
-                      These will be displayed on your public startupHub page.
+                      These will be displayed on your public govDepartment page.
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                       <div className="space-y-2">
@@ -1279,7 +1279,7 @@ export default function ProfilePage() {
                           id="websiteUrl"
                           value={websiteUrl}
                           onChange={(e) => setWebsiteUrl(e.target.value)}
-                          placeholder="https://yourstartupHub.com"
+                          placeholder="https://yourgovDepartment.com"
                           className="bg-[#F5F5EE]/50 border-none h-12 sm:h-14 rounded-xl font-bold focus-visible:ring-4 focus-visible:ring-[#F26522]/10 shadow-sm"
                           disabled={isPending}
                         />
@@ -1287,15 +1287,15 @@ export default function ProfilePage() {
                     </div>
                     <div className="space-y-2">
                       <Label
-                        htmlFor="startupHubQuote"
+                        htmlFor="govDepartmentQuote"
                         className="text-[10px] font-black text-[#1A1A2E]/40 uppercase ml-1 tracking-widest"
                       >
                         Tagline / Quote
                       </Label>
                       <Input
-                        id="startupHubQuote"
-                        value={startupHubQuote}
-                        onChange={(e) => setStartupHubQuote(e.target.value)}
+                        id="govDepartmentQuote"
+                        value={govDepartmentQuote}
+                        onChange={(e) => setGovDepartmentQuote(e.target.value)}
                         placeholder="We look for founders who are obsessed with solving hard problems at scale."
                         className="bg-[#F5F5EE]/50 border-none h-12 sm:h-14 rounded-xl font-bold focus-visible:ring-4 focus-visible:ring-[#F26522]/10 shadow-sm"
                         disabled={isPending}
@@ -1414,20 +1414,20 @@ export default function ProfilePage() {
                       </div>
                     </div>
 
-                    {/* StartupHub Social Links */}
+                    {/* GovDepartment Social Links */}
                     <div className="space-y-4 pt-4 border-t border-[#1A1A2E]/5">
                       <div>
                         <h4 className="text-xs font-black text-[#1A1A2E] uppercase tracking-widest">
-                          StartupHub Social Links
+                          GovDepartment Social Links
                         </h4>
                         <p className="text-[11px] text-muted-foreground mt-0.5">
-                          Add the social channels for your startupHub program.
+                          Add the social channels for your govDepartment program.
                         </p>
                       </div>
 
                       {/* Display current links */}
                       <div className="space-y-2">
-                        {Object.entries(startupHubSocials).map(([platform, url]) => (
+                        {Object.entries(govDepartmentSocials).map(([platform, url]) => (
                           <div
                             key={platform}
                             className="flex items-center justify-between p-3 bg-[#F5F5EE]/40 border border-[#1A1A2E]/5 rounded-xl"
@@ -1445,9 +1445,9 @@ export default function ProfilePage() {
                               variant="ghost"
                               size="sm"
                               onClick={() => {
-                                const copy = { ...startupHubSocials };
+                                const copy = { ...govDepartmentSocials };
                                 delete copy[platform];
-                                setStartupHubSocials(copy);
+                                setGovDepartmentSocials(copy);
                               }}
                               className="h-8 px-2 text-red-500 hover:text-red-700 hover:bg-red-50 font-bold text-xs uppercase"
                             >
@@ -1456,9 +1456,9 @@ export default function ProfilePage() {
                           </div>
                         ))}
 
-                        {Object.keys(startupHubSocials).length === 0 && (
+                        {Object.keys(govDepartmentSocials).length === 0 && (
                           <p className="text-xs text-[#1A1A2E]/30 italic pl-1">
-                            No startupHub social links added yet.
+                            No govDepartment social links added yet.
                           </p>
                         )}
                       </div>
@@ -1481,7 +1481,7 @@ export default function ProfilePage() {
 
                         <Input
                           id="social-url"
-                          placeholder="Link URL or username (e.g. https://x.com/startup-hub)"
+                          placeholder="Link URL or username (e.g. https://x.com/gov-department)"
                           className="bg-white border-[#1A1A2E]/5 h-11 rounded-full font-bold px-4 focus-visible:ring-4 focus-visible:ring-[#F26522]/10 flex-1 shadow-sm text-sm"
                           onKeyDown={(e) => {
                             if (e.key === "Enter") {
@@ -1491,8 +1491,8 @@ export default function ProfilePage() {
                               const platform = selectEl?.value;
                               const url = inputEl?.value.trim();
                               if (platform && url) {
-                                setStartupHubSocials({
-                                  ...startupHubSocials,
+                                setGovDepartmentSocials({
+                                  ...govDepartmentSocials,
                                   [platform]: url,
                                 });
                                 inputEl.value = "";
@@ -1509,8 +1509,8 @@ export default function ProfilePage() {
                             const platform = selectEl?.value;
                             const url = inputEl?.value.trim();
                             if (platform && url) {
-                              setStartupHubSocials({
-                                ...startupHubSocials,
+                              setGovDepartmentSocials({
+                                ...govDepartmentSocials,
                                 [platform]: url,
                               });
                               inputEl.value = "";

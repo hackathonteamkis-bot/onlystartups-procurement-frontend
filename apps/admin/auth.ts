@@ -70,22 +70,22 @@ export const {
         session.user.thesis = (token.thesis as string) || null;
         session.user.thesisAnswers =
           (token.thesisAnswers as Record<string, string>) || null;
-        // StartupHub profile fields
+        // GovDepartment profile fields
         session.user.activeStartups = (token.activeStartups as string) || null;
         session.user.totalExits = (token.totalExits as string) || null;
         session.user.fundingRaised = (token.fundingRaised as string) || null;
         session.user.mentorCount = (token.mentorCount as string) || null;
         session.user.networkSize = (token.networkSize as string) || null;
-        session.user.startupHubQuote =
-          (token.startupHubQuote as string) || null;
+        session.user.govDepartmentQuote =
+          (token.govDepartmentQuote as string) || null;
         session.user.websiteUrl = (token.websiteUrl as string) || null;
         session.user.location = (token.location as string) || null;
         session.user.sectors = (token.sectors as string[]) || [];
         session.user.programDuration =
           (token.programDuration as string) || null;
         session.user.equityTaken = (token.equityTaken as string) || null;
-        session.user.startupHubSocials =
-          (token.startupHubSocials as Record<string, string>) || null;
+        session.user.govDepartmentSocials =
+          (token.govDepartmentSocials as Record<string, string>) || null;
         session.user.applicationQuestions =
           (token.applicationQuestions as any) || null;
         session.user.applicationFormActive =

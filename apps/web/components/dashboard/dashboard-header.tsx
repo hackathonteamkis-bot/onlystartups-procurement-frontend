@@ -48,8 +48,19 @@ export function DashboardHeader() {
             const href = `/${pathSegments.slice(0, index + 1).join("/")}`;
             const isLast = index === pathSegments.length - 1;
             
-            // Use context mapping if available, otherwise fallback to titlecase
-            let label = breadcrumbMap[segment.toLowerCase()];
+            // Use context mapping if available, otherwise fallback to predefined defaults or titlecase
+            const defaultMap: Record<string, string> = {
+              "portfolio": "Active Pilots",
+              "programs": "Problem Statements",
+              "mentors": "Expert Evaluators",
+              "funding-opportunities": "Pilots & Tenders",
+              "events": "Briefings & Workshops",
+              "gov-departments": "Gov Departments",
+              "hubspot": "My Pilots",
+              "applications": "Submitted Solutions"
+            };
+            
+            let label = breadcrumbMap[segment.toLowerCase()] || defaultMap[segment.toLowerCase()];
             if (!label) {
                label = (segment === "overview" || segment === "dashboard") ? "Dashboard" : segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, " ");
             }

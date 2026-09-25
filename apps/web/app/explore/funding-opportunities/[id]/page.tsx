@@ -31,7 +31,7 @@ export default async function GrantDetailPage({
     return (
       <div className="h-[80vh] flex flex-col items-center justify-center gap-4 text-center">
         <Sparkles className="w-12 h-12 text-muted-foreground/20" />
-        <h2 className="text-xl font-bold">Funding Opportunity not found</h2>
+        <h2 className="text-xl font-bold">Pilot & Tender not found</h2>
         <Link
           href="/explore"
           className="text-[#F26522] hover:underline font-semibold"
@@ -99,21 +99,21 @@ export default async function GrantDetailPage({
           </div>
           
           {/* Startup Hub Info */}
-          {opportunity.startupHub && (
+          {opportunity.govDepartment && (
             <div className="space-y-3">
                <h4 className="text-base sm:text-lg font-medium text-[#1A1A2E]">Presented By</h4>
                <Separator className="bg-black/10" />
                <div className="pt-1">
                   <div className="flex items-center gap-3 w-full group">
                     <Avatar className="h-10 w-10 rounded-lg shrink-0">
-                      <AvatarImage src={opportunity.startupHub.image || ""} className="object-cover" />
+                      <AvatarImage src={opportunity.govDepartment.image || ""} className="object-cover" />
                       <AvatarFallback className="bg-[#1A1A2E] text-white font-black text-xs">
-                        {opportunity.startupHub.startupName?.charAt(0) || opportunity.startupHub.name?.charAt(0) || "SH"}
+                        {opportunity.govDepartment.startupName?.charAt(0) || opportunity.govDepartment.name?.charAt(0) || "SH"}
                       </AvatarFallback>
                     </Avatar>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-bold text-[#1A1A2E] whitespace-normal break-words">
-                        {opportunity.startupHub.startupName || opportunity.startupHub.name}
+                        {opportunity.govDepartment.startupName || opportunity.govDepartment.name}
                       </p>
                     </div>
                   </div>

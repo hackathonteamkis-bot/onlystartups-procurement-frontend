@@ -319,10 +319,10 @@ export function DashboardSidebar() {
             href: "/explore", 
             icon: Compass,
             items: [
-              { name: "Startup Hubs", href: "/explore/startup-hubs" },
-              { name: "Programs", href: "/explore/programs" },
-              { name: "Funding Opportunities", href: "/explore/funding-opportunities" },
-              { name: "Events", href: "/explore/events" },
+              { name: "Gov Departments", href: "/explore/gov-departments" },
+              { name: "Problem Statements", href: "/explore/programs" },
+              { name: "Pilots & Tenders", href: "/explore/funding-opportunities" },
+              { name: "Briefings & Workshops", href: "/explore/events" },
             ]
           },
           { name: "OS Daily", href: "/os-daily", icon: Newspaper },
@@ -334,9 +334,9 @@ export function DashboardSidebar() {
     groups.push({
       label: "Workspace",
       items: [
-        { name: "HubSpot", href: "/hubspot", icon: School },
-        { name: "Applications", href: "/applications", icon: FileText },
-        { name: "Upcoming Event", href: "/events", icon: Calendar },
+        { name: "My Pilots", href: "/hubspot", icon: School },
+        { name: "Submitted Solutions", href: "/applications", icon: FileText },
+        { name: "Briefings & Workshops", href: "/events", icon: Calendar },
       ],
     });
 

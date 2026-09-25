@@ -39,7 +39,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
       return { error: errorMessage };
     }
 
-    if (data?.user && data.user.role === 'STARTUP_HUB') {
+    if (data?.user && data.user.role === 'GOV_DEPARTMENT') {
       return { error: "Startup Hubs must login through the Startup Hub portal." };
     }
 

@@ -25,7 +25,7 @@ import { type ExtendedUser } from "@/next-auth";
 import { supabase } from "@/lib/supabase";
 import { formatDistanceToNow } from "date-fns";
 import { toast } from "sonner";
-import { StartupHubDashboard } from "@/components/dashboard/startup-hub-dashboard";
+import { GovDepartmentDashboard } from "@/components/dashboard/gov-department-dashboard";
 import { AdminDashboard } from "@/components/dashboard/admin-dashboard";
 import { cn } from "@/lib/utils";
 
@@ -155,8 +155,8 @@ export function DashboardClient({
 
     // Removed missingFields logic as it is not needed for admin dashboard
 
-    if (session?.user?.role === "STARTUP_HUB") {
-        return <StartupHubDashboard initialData={stats as any} />;
+    if (session?.user?.role === "GOV_DEPARTMENT") {
+        return <GovDepartmentDashboard initialData={stats as any} />;
     }
 
     if (session?.user?.role === "ADMIN") {

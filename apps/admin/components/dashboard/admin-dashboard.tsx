@@ -105,7 +105,7 @@ export function AdminDashboard() {
             <div className="flex items-center justify-between">
               <div className="space-y-1">
                 <p className="text-sm font-medium text-[#1A1A2E]/60">Startup Hubs</p>
-                <p className="text-3xl font-bold text-[#1A1A2E]">{stats?.usersByRole?.STARTUP_HUB || 0}</p>
+                <p className="text-3xl font-bold text-[#1A1A2E]">{stats?.usersByRole?.GOV_DEPARTMENT || 0}</p>
               </div>
               <div className="p-3 rounded-xl bg-green-500/10">
                 <Target className="w-6 h-6 text-green-600" />

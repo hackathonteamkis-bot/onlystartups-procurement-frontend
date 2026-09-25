@@ -30,8 +30,8 @@ interface ExploreItem {
   date?: string;
   time?: string;
   location?: string;
-  startupHubId?: string;
-  startupHub?: {
+  govDepartmentId?: string;
+  govDepartment?: {
     name?: string;
     startupName?: string;
     image?: string;
@@ -45,7 +45,7 @@ interface ExploreItem {
 
 interface ExploreClientProps {
   initialData: {
-    startupHubs: ExploreItem[];
+    govDepartments: ExploreItem[];
     resources: ExploreItem[];
     events: ExploreItem[];
     fundingOpportunities: ExploreItem[];
@@ -54,7 +54,7 @@ interface ExploreClientProps {
 }
 
 export function ExploreClient({ initialData }: ExploreClientProps) {
-  const startupHubs = initialData?.startupHubs || [];
+  const govDepartments = initialData?.govDepartments || [];
   const resources = initialData?.resources || [];
   const events = initialData?.events || [];
   const fundingOpportunities = initialData?.fundingOpportunities || [];
@@ -64,10 +64,10 @@ export function ExploreClient({ initialData }: ExploreClientProps) {
     <div className="space-y-12 pb-20">
       <LayoutGroup>
         <AnimatePresence mode="wait">
-          {/* StartupHubs */}
-          {startupHubs.length > 0 && (
+          {/* GovDepartments */}
+          {govDepartments.length > 0 && (
             <motion.section
-              key="startupHubs"
+              key="govDepartments"
               layout
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -75,9 +75,9 @@ export function ExploreClient({ initialData }: ExploreClientProps) {
             >
               <div className="flex items-center justify-between">
                 <h2 className="text-lg font-bold text-[#1A1A2E]">Startup Hubs</h2>
-                {startupHubs.length > 6 && (
+                {govDepartments.length > 6 && (
                   <Link
-                    href="/explore/startup-hubs"
+                    href="/explore/gov-departments"
                     className="text-xs font-semibold text-primary flex items-center gap-1 hover:underline"
                   >
                     See More <ChevronRight className="w-3 h-3" />
@@ -85,8 +85,8 @@ export function ExploreClient({ initialData }: ExploreClientProps) {
                 )}
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {startupHubs.slice(0, 6).map((item: ExploreItem) => (
-                  <CardMinimal key={item.id} item={item} type="startupHub" />
+                {govDepartments.slice(0, 6).map((item: ExploreItem) => (
+                  <CardMinimal key={item.id} item={item} type="govDepartment" />
                 ))}
               </div>
             </motion.section>
@@ -205,7 +205,7 @@ export function ExploreClient({ initialData }: ExploreClientProps) {
       </LayoutGroup>
 
       {/* Empty State */}
-      {startupHubs.length === 0 &&
+      {govDepartments.length === 0 &&
         resources.length === 0 &&
         events.length === 0 &&
         fundingOpportunities.length === 0 &&
@@ -235,7 +235,7 @@ function CardMinimal({
   type,
 }: {
   item: ExploreItem;
-  type: "startupHub" | "mentor" | "resource" | "grant" | "event" | "program";
+  type: "govDepartment" | "mentor" | "resource" | "grant" | "event" | "program";
 }) {
   const { status, data: session } = useSession();
   const router = useRouter();
@@ -280,7 +280,7 @@ function CardMinimal({
               {item.title || item.name}
             </h3>
             <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide flex items-center gap-1.5">
-              By {item.startupHub?.startupName || item.startupHub?.name}
+              By {item.govDepartment?.startupName || item.govDepartment?.name}
             </p>
           </div>
 
@@ -308,9 +308,9 @@ function CardMinimal({
       >
         <div className="flex items-start gap-3 mb-4">
           <Avatar className="h-10 w-10 rounded-lg border border-muted-foreground/10 bg-muted/10 shrink-0">
-            {item.startupHub?.image && <AvatarImage src={item.startupHub.image as string} className="object-cover" />}
+            {item.govDepartment?.image && <AvatarImage src={item.govDepartment.image as string} className="object-cover" />}
             <AvatarFallback className="text-xs font-bold bg-[#1A1A2E] text-white">
-              {(item.startupHub?.startupName || item.startupHub?.name || "?").charAt(0)}
+              {(item.govDepartment?.startupName || item.govDepartment?.name || "?").charAt(0)}
             </AvatarFallback>
           </Avatar>
           <div className="min-w-0 flex-1">
@@ -318,7 +318,7 @@ function CardMinimal({
               {item.name || item.title}
             </h3>
             <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wide mt-1 truncate">
-              By {item.startupHub?.startupName || item.startupHub?.name}
+              By {item.govDepartment?.startupName || item.govDepartment?.name}
             </p>
           </div>
         </div>
@@ -400,7 +400,7 @@ function CardMinimal({
         {type !== "resource" && (
           <div className="relative shrink-0">
             <Avatar className="h-10 w-10 rounded-lg border border-muted-foreground/5 bg-muted/10">
-              {(item.image || item.startupHub?.image) && <AvatarImage src={(item.image || item.startupHub?.image) as string} className="object-cover" />}
+              {(item.image || item.govDepartment?.image) && <AvatarImage src={(item.image || item.govDepartment?.image) as string} className="object-cover" />}
               <AvatarFallback className="text-[10px] font-bold bg-[#1A1A2E] text-white">
                 {(item.startupName || item.name || item.title || "?").charAt(0)}
               </AvatarFallback>
@@ -435,7 +435,7 @@ function CardMinimal({
                 Program
               </Badge>
               <span className="text-[9px] text-muted-foreground font-medium">
-                by {item.startupHub?.startupName || item.startupHub?.name}
+                by {item.govDepartment?.startupName || item.govDepartment?.name}
               </span>
             </div>
           )}
@@ -456,9 +456,9 @@ function CardMinimal({
 
       {/* Actions */}
       <div className="mt-4 flex items-center gap-2">
-        {type === "startupHub" || type === "program" ? (
+        {type === "govDepartment" || type === "program" ? (
           <>
-            {type !== "startupHub" && (
+            {type !== "govDepartment" && (
               item.isApplied ? (
                 <button
                   disabled
@@ -475,7 +475,7 @@ function CardMinimal({
                 </button>
               ) : (
                 <Link
-                  href={item.applyUrl || `/explore/startup-hubs/${item.startupHubId}/programs/${item.id}/apply`}
+                  href={item.applyUrl || `/explore/gov-departments/${item.govDepartmentId}/programs/${item.id}/apply`}
                   onClick={(e) => {
                     requireAuth(e, "Please login to apply.");
                   }}
@@ -489,10 +489,10 @@ function CardMinimal({
             )}
             <Link
               href={
-                type === "startupHub"
-                  ? `/explore/startup-hubs/${item.id}`
+                type === "govDepartment"
+                  ? `/explore/gov-departments/${item.id}`
                   : type === "program"
-                    ? `/explore/startup-hubs/${item.startupHubId}/programs/${item.id}`
+                    ? `/explore/gov-departments/${item.govDepartmentId}/programs/${item.id}`
                     : `/explore/events/${item.id}`
               }
               className="flex-1 h-8 bg-muted/50 text-foreground rounded-lg text-[10px] font-bold uppercase tracking-wider hover:bg-muted transition-all flex items-center justify-center"

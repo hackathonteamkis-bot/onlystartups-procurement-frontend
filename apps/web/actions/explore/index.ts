@@ -8,7 +8,7 @@ export const getExploreData = async () => {
   } catch (error) {
     console.error("Error fetching explore data:", error);
     return {
-      startupHubs: [],
+      govDepartments: [],
       resources: [],
       fundingOpportunities: [],
       events: [],
@@ -25,18 +25,18 @@ export const getGrantById = async (opportunityId: string) => {
   }
 };
 
-export const getStartupHubById = async (startupHubId: string) => {
+export const getGovDepartmentById = async (govDepartmentId: string) => {
   try {
-    return await fetchWithAuth(`/explore/startup-hubs/${startupHubId}`);
+    return await fetchWithAuth(`/explore/gov-departments/${govDepartmentId}`);
   } catch (error) {
-    console.error("Error fetching startupHub details:", error);
+    console.error("Error fetching govDepartment details:", error);
     return null;
   }
 };
 
 export const getAllPublicPrograms = async () => {
   try {
-    return await fetchWithAuth(`/programs/public`);
+    return await fetchWithAuth(`/problemStatements/public`);
   } catch (error) {
     console.error("Error fetching all public programs:", error);
     return [];
@@ -45,7 +45,7 @@ export const getAllPublicPrograms = async () => {
 
 export const getProgramByIdPublic = async (programId: string) => {
   try {
-    return await fetchWithAuth(`/programs/public/${programId}`);
+    return await fetchWithAuth(`/problemStatements/public/${programId}`);
   } catch (error) {
     console.error("Error fetching program details:", error);
     return { error: "Failed to fetch program details" };

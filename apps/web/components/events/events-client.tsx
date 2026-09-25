@@ -26,7 +26,7 @@ import { useRouter } from "next/navigation";
 interface EventsClientProps {
   initialMeetups: any[];
   initialHostedMeetups: any[];
-  isStartupHub: boolean;
+  isGovDepartment: boolean;
   userRole?: UserRole;
 }
 
@@ -89,7 +89,7 @@ const isEventLive = (dateStr: string, timeStr: string) => {
 export function EventsClient({
   initialMeetups,
   initialHostedMeetups,
-  isStartupHub,
+  isGovDepartment,
 }: EventsClientProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -133,13 +133,13 @@ export function EventsClient({
 
   return (
     <div className="space-y-8">
-      {isStartupHub && (
+      {isGovDepartment && (
         <div className="flex justify-end -mt-16 relative z-10">
           <CreateEventDialog onSuccess={onActionSuccess} />
         </div>
       )}
 
-      {isStartupHub ? (
+      {isGovDepartment ? (
         <div className="space-y-12">
           <section className="space-y-6">
             <h2 className="text-xl font-black text-[#1A1A2E] tracking-tight flex items-center gap-2">
@@ -311,10 +311,10 @@ export function EventsClient({
                                 <div className="flex flex-col gap-2 text-sm text-[#1A1A2E]/70 font-medium pb-1">
                                   <div className="flex items-start gap-2">
                                     <Avatar className="w-5 h-5 border border-[#1A1A2E]/10 shrink-0 mt-0.5">
-                                      <AvatarImage src={meetup.startupHub?.image} />
-                                      <AvatarFallback className="text-[8px] bg-[#F5F5EE] text-[#1A1A2E] font-bold">{meetup.startupHub?.name?.charAt(0) || "?"}</AvatarFallback>
+                                      <AvatarImage src={meetup.govDepartment?.image} />
+                                      <AvatarFallback className="text-[8px] bg-[#F5F5EE] text-[#1A1A2E] font-bold">{meetup.govDepartment?.name?.charAt(0) || "?"}</AvatarFallback>
                                     </Avatar>
-                                    <span className="leading-snug">By {meetup.startupHub?.startupName || meetup.startupHub?.name}</span>
+                                    <span className="leading-snug">By {meetup.govDepartment?.govDepartmentName || meetup.govDepartment?.name}</span>
                                   </div>
                                   <div className="flex items-start gap-2">
                                     <MapPin className="w-4 h-4 text-[#1A1A2E]/40 shrink-0 mt-0.5" />
