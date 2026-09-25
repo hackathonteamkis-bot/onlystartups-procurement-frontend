@@ -1,0 +1,19 @@
+{
+  "name": "@onlystartups/ui",
+  "version": "0.0.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.tsx"
+  },
+  "dependencies": {
+    "lucide-react": "^0.469.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.5.0"
+  }
+}

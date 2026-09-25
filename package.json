@@ -1,0 +1,22 @@
+{
+  "name": "onlystartups-monorepo",
+  "private": true,
+  "packageManager": "npm@11.11.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "clean": "rm -rf .turbo apps/*/.next/cache node_modules/.cache"
+  },
+  "devDependencies": {
+    "turbo": "latest"
+  },
+  "dependencies": {
+    "browser-image-compression": "^2.0.2",
+    "react-easy-crop": "^6.2.2"
+  }
+}
